@@ -4,60 +4,115 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerCharacterController : MonoBehaviour {
+namespace HealthyLife {
 
-    #region Private properties
+    public class PlayerCharacterController : MonoBehaviour {
 
-    [SerializeField] private Transform _destinationPointTransform;
-    [SerializeField] private Transform _thePointOfLookTransform;
-    [SerializeField] private NavMeshAgent _playerNavMeshAgent;
-    [SerializeField] private Rigidbody2D _playerRigidbody2D;
+        #region Private properties
 
-    [SerializeField] private bool _reachedTheDestination = false;
-    [SerializeField] private float _destinationReachedThreshold;
+        [SerializeField] private Transform _destinationPointTransform;
+        [SerializeField] private Transform _thePointOfLookTransform;
 
-    #endregion
+        [SerializeField] private NavMeshAgent _playerNavMeshAgent;
+        [SerializeField] private Rigidbody2D _playerRigidbody2D;
 
-    #region Main methods
+        [SerializeField] private DestinationPoint _fridgePoint;
+        [SerializeField] private DestinationPoint _tablePoint;
+        [SerializeField] private DestinationPoint _bedPoint;
+        [SerializeField] private DestinationPoint _televisionPoint;
+        [SerializeField] private DestinationPoint _kitchenPoint;
+        [SerializeField] private DestinationPoint _innerDoorPoint;
 
-    private void Start() {
-        _playerNavMeshAgent.updateRotation = false;
-        _playerNavMeshAgent.updateUpAxis = false;
-    }
+        [SerializeField] private bool _moveToCharacter = false;
+        [SerializeField] private bool _reachedTheDestination = false;
+        [SerializeField] private float _destinationReachedThreshold;
 
-    private void Update() {
-        GoToTheDestinationPoint(_destinationPointTransform);
-        LookAtTheDestination(_destinationPointTransform);
-        CheckDestinationReached();
-    }
+        #endregion
 
-    #endregion
+        #region Main methods
 
-    #region Private methods
+        private void Start() {
+            _playerNavMeshAgent.updateRotation = false;
+            _playerNavMeshAgent.updateUpAxis = false;
+        }
 
-    private void GoToTheDestinationPoint(Transform destination) {
-        _playerNavMeshAgent.SetDestination(destination.position);
-    }
-    
-    private void LookAtTheDestination(Transform destination) {
-        if(!_reachedTheDestination) {
-            Vector2 lookDirection = (destination.position - transform.position);
-            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            _playerRigidbody2D.rotation = angle;
+        private void Update() {
+            if(_moveToCharacter) {
+                GoToTheDestinationPoint(_destinationPointTransform);
+                LookAtTheDestination(_destinationPointTransform);
+                CheckDestinationReached();
+            }
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void GoToTheDestinationPoint(Transform destination) {
+            _playerNavMeshAgent.SetDestination(destination.position);
         }
         
-    }
-
-    private void CheckDestinationReached() {
-        float distanceToDestination = Vector3.Distance(transform.position, _destinationPointTransform.position);
-        
-        if(distanceToDestination < _destinationReachedThreshold) {
-            LookAtTheDestination(_thePointOfLookTransform);
-            _reachedTheDestination = true;
-        } else {
-            _reachedTheDestination = false;
+        private void LookAtTheDestination(Transform destination) {
+            if(!_reachedTheDestination) {
+                Vector2 lookDirection = (destination.position - transform.position);
+                float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+                _playerRigidbody2D.rotation = angle;
+            }
+            
         }
-    }
 
-    #endregion
+        private void CheckDestinationReached() {
+            float distanceToDestination = Vector3.Distance(transform.position, _destinationPointTransform.position);
+            
+            if(distanceToDestination < _destinationReachedThreshold) {
+                LookAtTheDestination(_thePointOfLookTransform);
+                _reachedTheDestination = true;
+                _moveToCharacter = false;
+            } else {
+                _reachedTheDestination = false;
+            }
+        }
+
+        #endregion
+
+        #region Internal methods
+
+        internal void GoToTheInnerDoor() {
+            _moveToCharacter = true;
+            _destinationPointTransform = _innerDoorPoint.GetDestinationPoint();
+            _thePointOfLookTransform = _innerDoorPoint.GetLookPoint();
+        }
+
+        internal void GoToTheFridge() {
+            _moveToCharacter = true;
+            _destinationPointTransform = _fridgePoint.GetDestinationPoint();
+            _thePointOfLookTransform = _fridgePoint.GetLookPoint();
+        }
+
+        internal void GoToTheKitchen() {
+            _moveToCharacter = true;
+            _destinationPointTransform = _kitchenPoint.GetDestinationPoint();
+            _thePointOfLookTransform = _kitchenPoint.GetLookPoint();
+        }
+
+        internal void GoToTheTable() {
+            _moveToCharacter = true;
+            _destinationPointTransform = _tablePoint.GetDestinationPoint();
+            _thePointOfLookTransform = _tablePoint.GetLookPoint();
+        }
+
+        internal void GoToTheBed() {
+            _moveToCharacter = true;
+            _destinationPointTransform = _bedPoint.GetDestinationPoint();
+            _thePointOfLookTransform = _bedPoint.GetLookPoint();
+        }
+
+        internal void GoToTheTelevision() {
+            _moveToCharacter = true;
+            _destinationPointTransform = _televisionPoint.GetDestinationPoint();
+            _thePointOfLookTransform = _televisionPoint.GetLookPoint();
+        }
+
+        #endregion
+    }
 }

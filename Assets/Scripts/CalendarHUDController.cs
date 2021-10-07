@@ -20,11 +20,11 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowDayText() {
-            _dayText.text = "Day " + _gameplayManager.GetDay().ToString();
+            _dayText.text = "Day " + _gameplayManager.Day.ToString();
         }
 
         private void ShowWeekdayText() {
-            _weekdayText.text = _gameplayManager.GetWeekday().ToString();
+            _weekdayText.text = _gameplayManager.CurrentWeekday.ToString();
         }
 
         private void ShowTimeText() {

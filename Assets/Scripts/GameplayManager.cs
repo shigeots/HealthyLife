@@ -7,6 +7,8 @@ namespace HealthyLife {
     public class GameplayManager : MonoBehaviour {
 
         #region Private properties
+
+        [SerializeField] private PlayerCharacterController _playerCharacterController;
     
         [SerializeField] private Weekdays _currentWeekday = Weekdays.Monday;
         [SerializeField] private List<Weekdays> _weekdays = new List<Weekdays>();
@@ -20,6 +22,24 @@ namespace HealthyLife {
         [SerializeField] private int _weight = 80;
         [SerializeField] private int _energyForToday = 100;
         [SerializeField] private int _energyForNextDay = 0;
+        [SerializeField] private bool _thereAreFood = false;
+
+        #endregion
+
+        #region Getter and setter
+
+        public Weekdays CurrentWeekday { get => _currentWeekday; set => _currentWeekday = value; }
+        public int Day { get => _day; set => _day = value; }
+        public int WeekdaysListPosition { get => _weekdaysListPosition; set => _weekdaysListPosition = value; }
+        public int Hour { get => _hour; set => _hour = value; }
+        public int Min { get => _min; set => _min = value; }
+        public int TimePerMinute { get => _timePerMinute; set => _timePerMinute = value; }
+        public int Happiness { get => _happiness; set => _happiness = value; }
+        public int Money { get => _money; set => _money = value; }
+        public int Weight { get => _weight; set => _weight = value; }
+        public int EnergyForToday { get => _energyForToday; set => _energyForToday = value; }
+        public int EnergyForNextDay { get => _energyForNextDay; set => _energyForNextDay = value; }
+        public bool ThereAreFood { get => _thereAreFood; set => _thereAreFood = value; }
 
         #endregion
 
@@ -41,28 +61,28 @@ namespace HealthyLife {
         #region Private methods
 
         private void NextDay() {
-            _day++;
+            Day++;
             NextWeekdays();
             ResetEnergy();
         }
 
         private void NextWeekdays() {
 
-            _weekdaysListPosition++;
+            WeekdaysListPosition++;
 
-            if(_weekdaysListPosition == 7) {
-                _weekdaysListPosition = 0;
+            if(WeekdaysListPosition == 7) {
+                WeekdaysListPosition = 0;
             }
 
-            _currentWeekday = _weekdays[_weekdaysListPosition];
+            CurrentWeekday = _weekdays[WeekdaysListPosition];
 
         }
 
         [ContextMenu("CalculateHourAndMinute")]
         private void CalculateHourAndMinute() {
 
-            _hour = _timePerMinute / 60;
-            _min = _timePerMinute % 60;
+            Hour = TimePerMinute / 60;
+            Min = TimePerMinute % 60;
 
         }
 
@@ -73,90 +93,120 @@ namespace HealthyLife {
         }
 
         private void ChangeTheTimeTo7() {
-            _timePerMinute = 420;
+            TimePerMinute = 420;
         }
 
         private void IncreaseMoreMinutes(int minutes) {
-            _timePerMinute += minutes;
+            TimePerMinute += minutes;
         }
 
         private void IncreaseMoney(int money) {
-            _money += money;
+            Money += money;
         }
 
         private void DecreaseMoney(int money) {
 
-            if(_money < money) {
+            if(Money < money) {
                 Debug.Log("Dinero insuficiente.");
                 return;
             }
 
-            _money -= money;
+            Money -= money;
         }
 
         private void IncreaseHappiness(int happiness) {
-            _happiness += happiness;
+            Happiness += happiness;
         }
 
         private void DecreaseHappiness(int happiness) {
 
-            if(_happiness < happiness) {
+            if(Happiness < happiness) {
                 Debug.Log("Felicidad insuficiente");
                 return;
             }
             
-            _happiness -= happiness;
+            Happiness -= happiness;
         }
 
         private void IncreaseWeight(int weight) {
-            _weight += weight;
+            Weight += weight;
         }
 
         private void DecreaseWeight(int weight) {
 
-            if(_weight < weight) {
+            if(Weight < weight) {
                 Debug.Log("no puede perder mas peso");
                 return;
             }
             
-            _weight -= weight;
+            Weight -= weight;
         }
 
         private void IncreaseEnergyForNextDay(int energy) {
-            _energyForNextDay += energy;
+            EnergyForNextDay += energy;
         }
 
         private void DecreaseEnergyForToday(int energy) {
 
-            if(_energyForToday < energy) {
+            if(EnergyForToday < energy) {
                 Debug.Log("energia insuficiente");
                 return;
             }
             
-            _energyForToday -= energy;
+            EnergyForToday -= energy;
         }
 
         private void ResetEnergy() {
-            _energyForToday = _energyForNextDay;
-            _energyForNextDay = 0;
+            EnergyForToday = EnergyForNextDay;
+            EnergyForNextDay = 0;
         }
 
         #endregion
 
         #region Internal methods
 
-        internal int GetDay() {
-            return _day;
-        }
-
-        internal Weekdays GetWeekday() {
-            return _currentWeekday;
-        }
-
         internal string GetTime() {
-            string hour = _hour.ToString("00");
-            string min = _min.ToString("00");
+            string hour = Hour.ToString("00");
+            string min = Min.ToString("00");
             return string.Format ("{00}:{01}", hour, min);
+        }
+
+        internal void StartWorkActivity(int happiness, int energyForToday) {
+            _playerCharacterController.GoToTheInnerDoor();
+            DecreaseHappiness(happiness);
+            DecreaseEnergyForToday(energyForToday);
+        }
+
+        internal void StartCheckFridgeActivity() {
+            _playerCharacterController.GoToTheFridge();
+        }
+
+        internal void StartWatchTVActivity() {
+            _playerCharacterController.GoToTheTelevision();
+        }
+
+        internal void StartEatActivity() {
+            _playerCharacterController.GoToTheTable();
+        }
+
+        internal void StartSleepActivity() {
+            _playerCharacterController.GoToTheBed();
+        }
+
+        internal void StartCookActivity() {
+            _playerCharacterController.GoToTheKitchen();
+        }
+
+        internal void StartExerciseActivity() {
+            _playerCharacterController.GoToTheInnerDoor();
+        }
+
+        internal void StartShopActivity() {
+            _playerCharacterController.GoToTheInnerDoor();
+        }
+
+        internal void StartGoParttingActivity() {
+            _playerCharacterController.GoToTheInnerDoor();
         }
 
         #endregion
