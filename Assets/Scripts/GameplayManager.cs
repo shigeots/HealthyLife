@@ -191,6 +191,7 @@ namespace HealthyLife {
 
         internal void StartSleepActivity() {
             _playerCharacterController.GoToTheBed();
+            NextDay();
         }
 
         internal void StartCookActivity() {
