@@ -10,25 +10,29 @@ namespace HealthyLife {
 
         #region Private properties
 
-        [SerializeField] private TextMeshProUGUI _moneyText;
-        [SerializeField] private TextMeshProUGUI _happinessText;
-        [SerializeField] private TextMeshProUGUI _energyForTodayText;
-        [SerializeField] private TextMeshProUGUI _energyForNextDayText;
-        [SerializeField] private TextMeshProUGUI _weightText;
-
-        [SerializeField] private GameplayManager _gameplayManager;
+        [SerializeField] private GameObject _moneyText;
+        [SerializeField] private GameObject _happinessText;
+        [SerializeField] private GameObject _energyForTodayText;
+        [SerializeField] private GameObject _energyForNextDayText;
+        [SerializeField] private GameObject _weightText;
 
         #endregion
 
         #region Internal methods
 
         [ContextMenu("update")]
-        internal void UpdateGameStats() {
-            _moneyText.text = _gameplayManager.Money.ToString();
-            _happinessText.text = _gameplayManager.Happiness.ToString();
-            _energyForNextDayText.text = _gameplayManager.EnergyForToday.ToString();
-            _energyForTodayText.text = _gameplayManager.EnergyForNextDay.ToString();
-            _weightText.text = _gameplayManager.Weight.ToString();
+        internal void UpdateGameStatsHUD() {
+            _moneyText.SetActive(false);
+            _happinessText.SetActive(false);
+            _energyForNextDayText.SetActive(false);
+            _energyForTodayText.SetActive(false);
+            _weightText.SetActive(false);
+
+            _moneyText.SetActive(true);
+            _happinessText.SetActive(true);
+            _energyForNextDayText.SetActive(true);
+            _energyForTodayText.SetActive(true);
+            _weightText.SetActive(true);
         }
 
         #endregion

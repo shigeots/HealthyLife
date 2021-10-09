@@ -8,6 +8,8 @@ namespace HealthyLife {
 
         #region Private properties
 
+        [SerializeField] private CalendarHUDController _calendarHUDController;
+        [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
     
         [SerializeField] private Weekdays _currentWeekday = Weekdays.Monday;
@@ -62,8 +64,8 @@ namespace HealthyLife {
 
         private void NextDay() {
             Day++;
-            NextWeekdays();
-            ResetEnergy();
+
+            Lean.Localization.LeanLocalization.SetToken("DAYNUMBERTOKEN", Day.ToString(), false);
         }
 
         private void NextWeekdays() {
@@ -94,6 +96,8 @@ namespace HealthyLife {
 
         private void ChangeTheTimeTo7() {
             TimePerMinute = 420;
+
+            CalculateHourAndMinute();
         }
 
         private void IncreaseMoreMinutes(int minutes) {
@@ -112,10 +116,12 @@ namespace HealthyLife {
             }
 
             Money -= money;
+            Lean.Localization.LeanLocalization.SetToken("MONEYTOKEN", Money.ToString(), false);
         }
 
         private void IncreaseHappiness(int happiness) {
             Happiness += happiness;
+            Lean.Localization.LeanLocalization.SetToken("HAPPINESSTOKEN", Happiness.ToString(), false);
         }
 
         private void DecreaseHappiness(int happiness) {
@@ -126,10 +132,12 @@ namespace HealthyLife {
             }
             
             Happiness -= happiness;
+            Lean.Localization.LeanLocalization.SetToken("HAPPINESSTOKEN", Happiness.ToString(), false);
         }
 
         private void IncreaseWeight(int weight) {
             Weight += weight;
+            Lean.Localization.LeanLocalization.SetToken("WEIGHTTOKEN", Weight.ToString(), false);
         }
 
         private void DecreaseWeight(int weight) {
@@ -140,10 +148,12 @@ namespace HealthyLife {
             }
             
             Weight -= weight;
+            Lean.Localization.LeanLocalization.SetToken("WEIGHTTOKEN", Weight.ToString(), false);
         }
 
         private void IncreaseEnergyForNextDay(int energy) {
             EnergyForNextDay += energy;
+            Lean.Localization.LeanLocalization.SetToken("ENERGYTOMORROWTOKEN", EnergyForNextDay.ToString(), false);
         }
 
         private void DecreaseEnergyForToday(int energy) {
@@ -154,11 +164,15 @@ namespace HealthyLife {
             }
             
             EnergyForToday -= energy;
+            Lean.Localization.LeanLocalization.SetToken("ENERGYTODAYTOKEN", EnergyForToday.ToString(), false);
         }
 
         private void ResetEnergy() {
             EnergyForToday = EnergyForNextDay;
             EnergyForNextDay = 0;
+
+            Lean.Localization.LeanLocalization.SetToken("ENERGYTODAYTOKEN", EnergyForToday.ToString(), false);
+            Lean.Localization.LeanLocalization.SetToken("ENERGYTOMORROWTOKEN", EnergyForNextDay.ToString(), false);
         }
 
         #endregion
@@ -192,6 +206,12 @@ namespace HealthyLife {
         internal void StartSleepActivity() {
             _playerCharacterController.GoToTheBed();
             NextDay();
+            NextWeekdays();
+            ResetEnergy();
+            ChangeTheTimeTo7();
+
+            _calendarHUDController.UpdateCalendarHUD();
+            _gameStatsHUDController.UpdateGameStatsHUD();
         }
 
         internal void StartCookActivity() {
