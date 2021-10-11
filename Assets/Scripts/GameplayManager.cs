@@ -12,8 +12,8 @@ namespace HealthyLife {
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
     
-        [SerializeField] private Weekdays _currentWeekday = Weekdays.Monday;
-        [SerializeField] private List<Weekdays> _weekdays = new List<Weekdays>();
+        [SerializeField] private Weekday _currentWeekday = Weekday.Monday;
+        [SerializeField] private List<Weekday> _weekdays = new List<Weekday>();
         [SerializeField] private int _day = 1;
         [SerializeField] private int _weekdaysListPosition = 0;
         [SerializeField] private int _hour;
@@ -24,13 +24,14 @@ namespace HealthyLife {
         [SerializeField] private int _weight = 80;
         [SerializeField] private int _energyForToday = 100;
         [SerializeField] private int _energyForNextDay = 0;
+        [SerializeField] private Food _foodForEat = null;
         [SerializeField] private bool _thereAreFood = false;
 
         #endregion
 
         #region Getter and setter
 
-        public Weekdays CurrentWeekday { get => _currentWeekday; set => _currentWeekday = value; }
+        public Weekday CurrentWeekday { get => _currentWeekday; set => _currentWeekday = value; }
         public int Day { get => _day; set => _day = value; }
         public int WeekdaysListPosition { get => _weekdaysListPosition; set => _weekdaysListPosition = value; }
         public int Hour { get => _hour; set => _hour = value; }
@@ -42,20 +43,23 @@ namespace HealthyLife {
         public int EnergyForToday { get => _energyForToday; set => _energyForToday = value; }
         public int EnergyForNextDay { get => _energyForNextDay; set => _energyForNextDay = value; }
         public bool ThereAreFood { get => _thereAreFood; set => _thereAreFood = value; }
+        public Food FoodForEat { get => _foodForEat; set => _foodForEat = value; }
 
         #endregion
 
         #region Main methods
 
         private void Start() {
-            _weekdays.Add(Weekdays.Monday);
-            _weekdays.Add(Weekdays.Tuesday);
-            _weekdays.Add(Weekdays.Wednesday);
-            _weekdays.Add(Weekdays.Thursday);
-            _weekdays.Add(Weekdays.Friday);
-            _weekdays.Add(Weekdays.Saturday);
-            _weekdays.Add(Weekdays.Sunday);
+            _weekdays.Add(Weekday.Monday);
+            _weekdays.Add(Weekday.Tuesday);
+            _weekdays.Add(Weekday.Wednesday);
+            _weekdays.Add(Weekday.Thursday);
+            _weekdays.Add(Weekday.Friday);
+            _weekdays.Add(Weekday.Saturday);
+            _weekdays.Add(Weekday.Sunday);
 
+            FoodForEat = null;
+            //FoodForEat = new Food("Hamburguer", 2, 50, 20);
         }
 
         #endregion

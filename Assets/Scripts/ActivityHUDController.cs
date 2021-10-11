@@ -9,6 +9,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private GameplayManager _gameplayManager;
+        [SerializeField] private PlayerCharacterController _playerCharacterController;
 
         #endregion
 
@@ -16,7 +17,9 @@ namespace HealthyLife {
 
         public void OnClicWorkButton() {
             if(_gameplayManager.Happiness > 25 && _gameplayManager.EnergyForToday > 30) {
-                _gameplayManager.StartWorkActivity(25, 30);
+                _playerCharacterController.AssignShowWorkHUDEvent();
+                _playerCharacterController.GoToTheInnerDoor();
+                //_gameplayManager.StartWorkActivity(25, 30);
             } else {
                 Debug.Log("Felicidad o energia insuficiente");
             }
@@ -32,14 +35,18 @@ namespace HealthyLife {
 
         public void OnClickEatButton() {
             if(_gameplayManager.ThereAreFood) {
-                _gameplayManager.StartEatActivity();
+                _playerCharacterController.AssignShowEatHUDEvent();
+                _playerCharacterController.GoToTheTable();
+                //_gameplayManager.StartEatActivity();
             } else {
                 Debug.Log("No hay comida");
             }
         }
 
         public void OnClickSleepButton() {
-            _gameplayManager.StartSleepActivity();
+            _playerCharacterController.AssignShowSleepHUDEvent();
+            _playerCharacterController.GoToTheBed();
+            //_gameplayManager.StartSleepActivity();
         }
 
         public void OnClickCookButton() {
@@ -47,7 +54,9 @@ namespace HealthyLife {
         }
 
         public void OnClickExerciseButton() {
-            _gameplayManager.StartExerciseActivity();
+            _playerCharacterController.AssignShowExerciseHUDEvent();
+            _playerCharacterController.GoToTheInnerDoor();
+            //_gameplayManager.StartExerciseActivity();
         }
 
         public void OnClickGoShoppingButton() {
@@ -55,7 +64,9 @@ namespace HealthyLife {
         }
 
         public void OnClickGoPartingButton() {
-            _gameplayManager.StartGoParttingActivity();
+            _playerCharacterController.AssignShowPartingHUDEvent();
+            _playerCharacterController.GoToTheInnerDoor();
+            //_gameplayManager.StartGoParttingActivity();
         }
 
         #endregion

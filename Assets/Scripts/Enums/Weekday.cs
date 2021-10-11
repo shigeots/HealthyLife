@@ -1,6 +1,6 @@
 namespace HealthyLife {
 
-    public enum Weekdays {
+    public enum Weekday {
         Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     }
 }

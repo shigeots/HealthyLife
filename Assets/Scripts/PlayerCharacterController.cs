@@ -27,6 +27,14 @@ namespace HealthyLife {
         [SerializeField] private bool _reachedTheDestination = false;
         [SerializeField] private float _destinationReachedThreshold;
 
+        private ShowHUDFunction _showHUDFunction;
+
+        #endregion
+
+        #region Public properties
+
+        public delegate void ShowHUDFunction();
+
         #endregion
 
         #region Main methods
@@ -68,9 +76,31 @@ namespace HealthyLife {
                 LookAtTheDestination(_thePointOfLookTransform);
                 _reachedTheDestination = true;
                 _moveToCharacter = false;
+
+                CallShowHUDEvent(_showHUDFunction);
             } else {
                 _reachedTheDestination = false;
             }
+        }
+
+        private void CallShowWorkHUDEvent() {
+            EventObserver.ShowWorkHUDEvent();
+        }
+
+        private void CallShowSleepHUDEvent() {
+            EventObserver.ShowSleepHUDEvent();
+        }
+
+        private void CallShowEatHUDEvent() {
+            EventObserver.ShowEatHUDEvent();
+        }
+
+        private void CallShowExerciseHUDEvent() {
+            EventObserver.ShowExerciseHUDEvent();
+        }
+
+        private void CallShowPartingHUDEvent() {
+            EventObserver.ShowPartingHUDEvent();
         }
 
         #endregion
@@ -113,6 +143,35 @@ namespace HealthyLife {
             _thePointOfLookTransform = _televisionPoint.GetLookPoint();
         }
 
+        internal void AssignShowWorkHUDEvent() {
+            _showHUDFunction = CallShowWorkHUDEvent;
+        }
+
+        internal void AssignShowSleepHUDEvent() {
+            _showHUDFunction = CallShowSleepHUDEvent;
+        }
+
+        internal void AssignShowEatHUDEvent() {
+            _showHUDFunction = CallShowEatHUDEvent;
+        }
+
+        internal void AssignShowExerciseHUDEvent() {
+            _showHUDFunction = CallShowExerciseHUDEvent;
+        }
+
+        internal void AssignShowPartingHUDEvent() {
+            _showHUDFunction = CallShowPartingHUDEvent;
+        }
+
         #endregion
+
+        #region Public methods
+
+        public static void CallShowHUDEvent(ShowHUDFunction showHUDFunction){
+            showHUDFunction();
+        }
+
+        #endregion
+
     }
 }
