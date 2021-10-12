@@ -6,7 +6,9 @@ namespace HealthyLife {
 
     public static class EventObserver {
 
-        public static Action<int, int> WorkStartEvent;
+        public static Action<int, int, int, int> WorkStartEvent;
+
+        public static Action SleepStartEvent;
 
         public static Action ShowWorkHUDEvent;
 
@@ -17,6 +19,8 @@ namespace HealthyLife {
         public static Action ShowExerciseHUDEvent;
 
         public static Action ShowPartingHUDEvent;
+
+        public static Action ShowWatchTVHUDEvent;
 
     }
 }

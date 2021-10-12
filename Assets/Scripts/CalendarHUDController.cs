@@ -25,6 +25,14 @@ namespace HealthyLife {
 
         #endregion
 
+        #region Main methods
+
+        private void Start() {
+            UpdateCalendarHUD();
+        }
+
+        #endregion
+
         #region Private methods
 
         private void ShowDayText() {
@@ -109,7 +117,6 @@ namespace HealthyLife {
 
         #endregion
 
-        [ContextMenu("asdf")]
         internal void UpdateCalendarHUD() {
             ShowDayText();
             ShowWeekdayText();

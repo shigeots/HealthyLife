@@ -6,14 +6,14 @@ using UnityEngine;
 namespace HealthyLife {
 
     [Serializable]
-    public class FunkFood : Food {
+    public class JunkFood : Food {
 
         [SerializeField] private int _cost;
 
-        public FunkFood() {
+        public JunkFood() {
         }
 
-        public FunkFood(string name, int weight, int energy, int happiness, int cost) : base(name, weight, energy, happiness) {
+        public JunkFood(string name, int weight, int energy, int happiness, int cost) : base(name, weight, energy, happiness) {
             Cost = cost;
         }
 

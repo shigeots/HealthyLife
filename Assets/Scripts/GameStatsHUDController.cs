@@ -18,9 +18,16 @@ namespace HealthyLife {
 
         #endregion
 
+        #region Main methods
+
+        private void Start() {
+            UpdateGameStatsHUD();
+        }
+
+        #endregion
+
         #region Internal methods
 
-        [ContextMenu("update")]
         internal void UpdateGameStatsHUD() {
             _moneyText.SetActive(false);
             _happinessText.SetActive(false);

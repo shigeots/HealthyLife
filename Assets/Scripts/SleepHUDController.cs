@@ -9,6 +9,9 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _sleepHUDCanvas;
+        [SerializeField] private GameplayManager _gameplayManager;
+        [SerializeField] private CalendarHUDController _calendarHUDController;
+        [SerializeField] private GameStatsHUDController _gameStatsHUDController;
 
         #endregion
 
@@ -37,6 +40,13 @@ namespace HealthyLife {
         #endregion
 
         #region Public methods
+
+        public void OnClicYesButton() {
+            _gameplayManager.StartSleepActivity();
+            _calendarHUDController.UpdateCalendarHUD();
+            _gameStatsHUDController.UpdateGameStatsHUD();
+            HideSleepHUDCavas();
+        }
 
         public void OnClicNoButton() {
             HideSleepHUDCavas();

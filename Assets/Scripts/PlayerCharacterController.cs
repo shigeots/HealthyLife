@@ -103,6 +103,10 @@ namespace HealthyLife {
             EventObserver.ShowPartingHUDEvent();
         }
 
+        private void CallShowWatchTVHUDEvent() {
+            EventObserver.ShowWatchTVHUDEvent();
+        }
+
         #endregion
 
         #region Internal methods
@@ -161,6 +165,10 @@ namespace HealthyLife {
 
         internal void AssignShowPartingHUDEvent() {
             _showHUDFunction = CallShowPartingHUDEvent;
+        }
+
+        internal void AssignShowWatchTVHUDEvent() {
+            _showHUDFunction = CallShowWatchTVHUDEvent;
         }
 
         #endregion

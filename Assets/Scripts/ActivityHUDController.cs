@@ -16,10 +16,9 @@ namespace HealthyLife {
         #region Public methods
 
         public void OnClicWorkButton() {
-            if(_gameplayManager.Happiness > 25 && _gameplayManager.EnergyForToday > 30) {
+            if(_gameplayManager.Happiness >= 20 && _gameplayManager.EnergyForToday >= 30) {
                 _playerCharacterController.AssignShowWorkHUDEvent();
                 _playerCharacterController.GoToTheInnerDoor();
-                //_gameplayManager.StartWorkActivity(25, 30);
             } else {
                 Debug.Log("Felicidad o energia insuficiente");
             }
@@ -30,7 +29,10 @@ namespace HealthyLife {
         }
 
         public void OnClicWatchTVButton() {
-            _gameplayManager.StartWatchTVActivity();
+            _playerCharacterController.AssignShowWatchTVHUDEvent();
+            _playerCharacterController.GoToTheTelevision();
+
+            //_gameplayManager.StartWatchTVActivity();
         }
 
         public void OnClickEatButton() {
@@ -64,8 +66,17 @@ namespace HealthyLife {
         }
 
         public void OnClickGoPartingButton() {
-            _playerCharacterController.AssignShowPartingHUDEvent();
-            _playerCharacterController.GoToTheInnerDoor();
+            if(_gameplayManager.Money >= 160) {
+                _playerCharacterController.AssignShowPartingHUDEvent();
+                _playerCharacterController.GoToTheInnerDoor();
+            }
+            /*
+            if(_gameplayManager.CurrentWeekday == Weekday.Saturday && _gameplayManager.CurrentWeekday == Weekday.Sunday) {
+                
+            } else {
+                Debug.Log("No es fin de semana o ");
+            }
+            */
             //_gameplayManager.StartGoParttingActivity();
         }
 

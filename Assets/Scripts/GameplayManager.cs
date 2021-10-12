@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,7 +50,7 @@ namespace HealthyLife {
 
         #region Main methods
 
-        private void Start() {
+        private void Awake() {
             _weekdays.Add(Weekday.Monday);
             _weekdays.Add(Weekday.Tuesday);
             _weekdays.Add(Weekday.Wednesday);
@@ -58,8 +59,13 @@ namespace HealthyLife {
             _weekdays.Add(Weekday.Saturday);
             _weekdays.Add(Weekday.Sunday);
 
-            FoodForEat = null;
-            //FoodForEat = new Food("Hamburguer", 2, 50, 20);
+            //FoodForEat = null;
+            ThereAreFood = true;
+            FoodForEat = new JunkFood("Hamburguer", 2, 50, 20, 60);
+            //List<Ingredient> ingredients = new List<Ingredient>();
+            //FoodForEat = new HealthyFood("Ensalda", 0, 50, 20, ingredients);
+
+            ChangeTheTimeTo7();
         }
 
         #endregion
@@ -84,15 +90,11 @@ namespace HealthyLife {
 
         }
 
-        [ContextMenu("CalculateHourAndMinute")]
-        private void CalculateHourAndMinute() {
-
+        internal void CalculateHourAndMinute() {
             Hour = TimePerMinute / 60;
             Min = TimePerMinute % 60;
-
         }
 
-        [ContextMenu("WakeUp")]
         private void WakeUp() {
             NextDay();
             ChangeTheTimeTo7();
@@ -106,10 +108,14 @@ namespace HealthyLife {
 
         private void IncreaseMoreMinutes(int minutes) {
             TimePerMinute += minutes;
+
+            CalculateHourAndMinute();
         }
 
         private void IncreaseMoney(int money) {
             Money += money;
+
+            Lean.Localization.LeanLocalization.SetToken("MONEYTOKEN", Money.ToString(), false);
         }
 
         private void DecreaseMoney(int money) {
@@ -125,6 +131,11 @@ namespace HealthyLife {
 
         private void IncreaseHappiness(int happiness) {
             Happiness += happiness;
+
+            if(Happiness > 100) {
+                Happiness = 100;
+            }
+
             Lean.Localization.LeanLocalization.SetToken("HAPPINESSTOKEN", Happiness.ToString(), false);
         }
 
@@ -157,6 +168,11 @@ namespace HealthyLife {
 
         private void IncreaseEnergyForNextDay(int energy) {
             EnergyForNextDay += energy;
+
+            if(EnergyForNextDay > 100) {
+                EnergyForNextDay = 100;
+            }
+
             Lean.Localization.LeanLocalization.SetToken("ENERGYTOMORROWTOKEN", EnergyForNextDay.ToString(), false);
         }
 
@@ -189,33 +205,58 @@ namespace HealthyLife {
             return string.Format ("{00}:{01}", hour, min);
         }
 
-        internal void StartWorkActivity(int happiness, int energyForToday) {
-            _playerCharacterController.GoToTheInnerDoor();
+        internal void StartWorkActivity(int happiness, int energyForToday, int time, int money) {
             DecreaseHappiness(happiness);
             DecreaseEnergyForToday(energyForToday);
+            IncreaseMoreMinutes(time);
+            IncreaseMoney(money);
         }
 
         internal void StartCheckFridgeActivity() {
             _playerCharacterController.GoToTheFridge();
+            
         }
 
-        internal void StartWatchTVActivity() {
-            _playerCharacterController.GoToTheTelevision();
+        internal void StartWatchTV30MinutesActivity() {
+            IncreaseHappiness(2);
+            IncreaseMoreMinutes(30);
+        }
+
+        internal void StartWatchTV1HourActivity() {
+            IncreaseHappiness(4);
+            IncreaseMoreMinutes(60);
+        }
+
+        internal void StartWatchTV2HoursActivity() {
+            IncreaseHappiness(8);
+            IncreaseMoreMinutes(120);
         }
 
         internal void StartEatActivity() {
-            _playerCharacterController.GoToTheTable();
+            IncreaseMoreMinutes(20);
+
+            IncreaseEnergyForNextDay(FoodForEat.Energy);
+            IncreaseHappiness(FoodForEat.Happiness);
+            IncreaseWeight(FoodForEat.Weight);
+
+            /*
+            Type type = FoodForEat.GetType();
+
+            if(type.Equals(typeof(JunkFood))) {
+                
+            }
+            if(type.Equals(typeof(HealthyFood))) {
+                
+            }*/
+
         }
 
         internal void StartSleepActivity() {
-            _playerCharacterController.GoToTheBed();
             NextDay();
             NextWeekdays();
             ResetEnergy();
             ChangeTheTimeTo7();
 
-            _calendarHUDController.UpdateCalendarHUD();
-            _gameStatsHUDController.UpdateGameStatsHUD();
         }
 
         internal void StartCookActivity() {
@@ -223,7 +264,9 @@ namespace HealthyLife {
         }
 
         internal void StartExerciseActivity() {
-            _playerCharacterController.GoToTheInnerDoor();
+            DecreaseEnergyForToday(30);
+            IncreaseMoreMinutes(120);
+            DecreaseWeight(3);
         }
 
         internal void StartShopActivity() {
@@ -231,7 +274,10 @@ namespace HealthyLife {
         }
 
         internal void StartGoParttingActivity() {
-            _playerCharacterController.GoToTheInnerDoor();
+            IncreaseHappiness(50);
+            DecreaseEnergyForToday(25);
+            IncreaseMoreMinutes(480);
+            DecreaseMoney(160);
         }
 
         #endregion

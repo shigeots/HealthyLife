@@ -9,6 +9,9 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _exerciseHUDCanvas;
+        [SerializeField] private GameplayManager _gameplayManager;
+        [SerializeField] private CalendarHUDController _calendarHUDController;
+        [SerializeField] private GameStatsHUDController _gameStatsHUDController;
 
         #endregion
 
@@ -27,6 +30,15 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowExerciseHUDCavas() {
+            if(_gameplayManager.TimePerMinute > 1320) {
+                Debug.Log("No tiene suficeinte tiempo");
+                return;
+            }
+            if(_gameplayManager.EnergyForToday < 30) {
+                Debug.Log("no tiene energia suficiente");
+                return;
+            }
+            
             _exerciseHUDCanvas.enabled = true;
         }
 
@@ -37,6 +49,13 @@ namespace HealthyLife {
         #endregion
 
         #region Public methods
+
+        public void OnClicYesButton() {
+            _gameplayManager.StartExerciseActivity();
+            _calendarHUDController.UpdateCalendarHUD();
+            _gameStatsHUDController.UpdateGameStatsHUD();
+            HideExerciseHUDCavas();
+        }
 
         public void OnClicNoButton() {
             HideExerciseHUDCavas();
