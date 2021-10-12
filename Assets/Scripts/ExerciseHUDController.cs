@@ -29,7 +29,7 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowExerciseHUDCavas() {
+        private void ShowExerciseHUDCanvas() {
             if(_gameplayManager.TimePerMinute > 1320) {
                 Debug.Log("No tiene suficeinte tiempo");
                 return;
@@ -42,7 +42,7 @@ namespace HealthyLife {
             _exerciseHUDCanvas.enabled = true;
         }
 
-        private void HideExerciseHUDCavas() {
+        private void HideExerciseHUDCanvas() {
             _exerciseHUDCanvas.enabled = false;
         }
 
@@ -54,19 +54,19 @@ namespace HealthyLife {
             _gameplayManager.StartExerciseActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HideExerciseHUDCavas();
+            HideExerciseHUDCanvas();
         }
 
         public void OnClicNoButton() {
-            HideExerciseHUDCavas();
+            HideExerciseHUDCanvas();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowExerciseHUDEvent += ShowExerciseHUDCavas;
+            EventObserver.ShowExerciseHUDEvent += ShowExerciseHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowExerciseHUDEvent -= ShowExerciseHUDCavas;
+            EventObserver.ShowExerciseHUDEvent -= ShowExerciseHUDCanvas;
         }
 
         #endregion

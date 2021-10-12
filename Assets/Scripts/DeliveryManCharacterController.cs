@@ -31,6 +31,8 @@ namespace HealthyLife {
 
         public bool DeliveryArrived { get => _deliveryArrived; set => _deliveryArrived = value; }
 
+        #endregion
+
         #region Main methods
 
         private void Start() {

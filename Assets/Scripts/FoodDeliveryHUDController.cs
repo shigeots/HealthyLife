@@ -41,7 +41,7 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowFoodDeliveryHUDCavas() {
+        private void ShowFoodDeliveryHUDCanvas() {
             /*
             if(_gameplayManager.TimePerMinute > 1380) {
                 Debug.Log("No tiene suficeinte tiempo");
@@ -51,7 +51,7 @@ namespace HealthyLife {
             _foodDeliveryHUDCanvas.enabled = true;
         }
 
-        private void HideFoodDeliveryHUDCavas() {
+        private void HideFoodDeliveryHUDCanvas() {
             _foodDeliveryHUDCanvas.enabled = false;
         }
 
@@ -86,7 +86,7 @@ namespace HealthyLife {
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
             _activityHUDController.HideFoodDeliveryButton();
-            HideFoodDeliveryHUDCavas();
+            HideFoodDeliveryHUDCanvas();
         }
 
         public void OnClicPizzaButton() {
@@ -94,7 +94,7 @@ namespace HealthyLife {
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
             _activityHUDController.HideFoodDeliveryButton();
-            HideFoodDeliveryHUDCavas();
+            HideFoodDeliveryHUDCanvas();
         }
 
         public void OnClicHamburgerButton() {
@@ -102,19 +102,19 @@ namespace HealthyLife {
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
             _activityHUDController.HideFoodDeliveryButton();
-            HideFoodDeliveryHUDCavas();
+            HideFoodDeliveryHUDCanvas();
         }
 
         public void OnClicCloseButton() {
-            HideFoodDeliveryHUDCavas();
+            HideFoodDeliveryHUDCanvas();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowDeliveryFoodHUDEvent += ShowFoodDeliveryHUDCavas;
+            EventObserver.ShowDeliveryFoodHUDEvent += ShowFoodDeliveryHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowDeliveryFoodHUDEvent -= ShowFoodDeliveryHUDCavas;
+            EventObserver.ShowDeliveryFoodHUDEvent -= ShowFoodDeliveryHUDCanvas;
         }
 
         #endregion

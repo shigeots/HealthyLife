@@ -29,7 +29,7 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowEatHUDCavas() {
+        private void ShowEatHUDCanvas() {
             if(_gameplayManager.TimePerMinute > 1420) {
                 Debug.Log("No tiene suficeinte tiempo");
                 return;
@@ -42,7 +42,7 @@ namespace HealthyLife {
             _eatHUDCanvas.enabled = true;
         }
 
-        private void HideEatHUDCavas() {
+        private void HideEatHUDCanvas() {
             _eatHUDCanvas.enabled = false;
         }
 
@@ -54,19 +54,19 @@ namespace HealthyLife {
             _gameplayManager.StartEatActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HideEatHUDCavas();
+            HideEatHUDCanvas();
         }
 
         public void OnClicNoButton() {
-            HideEatHUDCavas();
+            HideEatHUDCanvas();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowEatHUDEvent += ShowEatHUDCavas;
+            EventObserver.ShowEatHUDEvent += ShowEatHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowEatHUDEvent -= ShowEatHUDCavas;
+            EventObserver.ShowEatHUDEvent -= ShowEatHUDCanvas;
         }
 
         #endregion

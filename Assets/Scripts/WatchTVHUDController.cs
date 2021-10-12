@@ -36,7 +36,7 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowWatchTVHUDCavas() {
+        private void ShowWatchTVHUDCanvas() {
             if(_gameplayManager.TimePerMinute > 1380) {
                 Debug.Log("No tiene suficeinte tiempo");
                 return;
@@ -45,7 +45,7 @@ namespace HealthyLife {
             _watchTVHUDCanvas.enabled = true;
         }
 
-        private void HideWatchTVHUDCavas() {
+        private void HideWatchTVHUDCanvas() {
             _watchTVHUDCanvas.enabled = false;
         }
 
@@ -79,33 +79,33 @@ namespace HealthyLife {
             _gameplayManager.StartWatchTV30MinutesActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HideWatchTVHUDCavas();
+            HideWatchTVHUDCanvas();
         }
 
         public void OnClic1HourButton() {
             _gameplayManager.StartWatchTV1HourActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HideWatchTVHUDCavas();
+            HideWatchTVHUDCanvas();
         }
 
         public void OnClic2HoursButton() {
             _gameplayManager.StartWatchTV2HoursActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HideWatchTVHUDCavas();
+            HideWatchTVHUDCanvas();
         }
 
         public void OnClicCloseButton() {
-            HideWatchTVHUDCavas();
+            HideWatchTVHUDCanvas();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowWatchTVHUDEvent += ShowWatchTVHUDCavas;
+            EventObserver.ShowWatchTVHUDEvent += ShowWatchTVHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowWatchTVHUDEvent -= ShowWatchTVHUDCavas;
+            EventObserver.ShowWatchTVHUDEvent -= ShowWatchTVHUDCanvas;
         }
 
         #endregion

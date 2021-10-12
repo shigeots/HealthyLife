@@ -29,7 +29,7 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowPartingHUDCavas() {
+        private void ShowPartingHUDCanvas() {
             if(_gameplayManager.TimePerMinute > 960) {
                 Debug.Log("No tiene suficeinte tiempo");
                 return;
@@ -46,7 +46,7 @@ namespace HealthyLife {
             _partingHUDCanvas.enabled = true;
         }
 
-        private void HidePartingHUDCavas() {
+        private void HidePartingHUDCanvas() {
             _partingHUDCanvas.enabled = false;
         }
 
@@ -58,19 +58,19 @@ namespace HealthyLife {
             _gameplayManager.StartGoParttingActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HidePartingHUDCavas();
+            HidePartingHUDCanvas();
         }
 
         public void OnClicNoButton() {
-            HidePartingHUDCavas();
+            HidePartingHUDCanvas();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowPartingHUDEvent += ShowPartingHUDCavas;
+            EventObserver.ShowPartingHUDEvent += ShowPartingHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowPartingHUDEvent -= ShowPartingHUDCavas;
+            EventObserver.ShowPartingHUDEvent -= ShowPartingHUDCanvas;
         }
 
         #endregion

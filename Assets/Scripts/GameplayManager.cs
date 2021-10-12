@@ -30,6 +30,17 @@ namespace HealthyLife {
         [SerializeField] private bool _thereAreFood = false;
         [SerializeField] private bool _orderedFoodDelivery = false;
         [SerializeField] private int _waitingTimeForDelivery = 0;
+        [SerializeField] private List<Ingredient> _fridge;
+
+        #endregion
+
+        #region Internal properties
+
+        [SerializeField] internal int amountOfOnion = 0;
+        [SerializeField] internal int amountOfTomato = 0;
+        [SerializeField] internal int amountOfLettuce = 0;
+        [SerializeField] internal int amountOfChicken = 0;
+        [SerializeField] internal int amountOfFish = 0;
 
         #endregion
 
@@ -50,6 +61,7 @@ namespace HealthyLife {
         public Food FoodForEat { get => _foodForEat; set => _foodForEat = value; }
         public bool OrderedFoodDelivery { get => _orderedFoodDelivery; set => _orderedFoodDelivery = value; }
         public int WaitingTimeForDelivery { get => _waitingTimeForDelivery; set => _waitingTimeForDelivery = value; }
+        public List<Ingredient> Fridge { get => _fridge; set => _fridge = value; }
 
         #endregion
 
@@ -66,9 +78,13 @@ namespace HealthyLife {
 
             FoodForEat = null;
             //ThereAreFood = true;
-            //FoodForEat = new JunkFood("Hamburguer", 2, 50, 20, 60);
-            //List<Ingredient> ingredients = new List<Ingredient>();
-            //FoodForEat = new HealthyFood("Ensalda", 0, 50, 20, ingredients);
+
+            _fridge.Add(new Ingredient("Onion",5));
+            _fridge.Add(new Ingredient("Onion",5));
+            _fridge.Add(new Ingredient("Tomato",10));
+            _fridge.Add(new Ingredient("Lettus",6));
+            _fridge.Add(new Ingredient("Chicken",15));
+            _fridge.Add(new Ingredient("Fish",20));
 
             ChangeTheTimeTo7();
         }
@@ -307,6 +323,39 @@ namespace HealthyLife {
             WaitingTimeForDelivery = 120;
             _foodForEat = junkFood;
             DecreaseMoney(junkFood.Cost);
+        }
+
+        internal void CheckFridge() {
+
+            amountOfOnion = 0;
+            amountOfTomato = 0;
+            amountOfLettuce = 0;
+            amountOfChicken = 0;
+            amountOfFish = 0;
+
+            foreach(var ingredient in Fridge) {
+                if(ingredient.Name == "Onion") {
+                    amountOfOnion++;
+                }
+                if(ingredient.Name == "Tomato") {
+                    amountOfTomato++;
+                }
+                if(ingredient.Name == "Lettuce") {
+                    amountOfLettuce++;
+                }
+                if(ingredient.Name == "Chicken") {
+                    amountOfChicken++;
+                }
+                if(ingredient.Name == "Fish") {
+                    amountOfFish++;
+                }
+            }
+
+            Lean.Localization.LeanLocalization.SetToken("AMOUNTONIONTOKEN", amountOfOnion.ToString(), false);
+            Lean.Localization.LeanLocalization.SetToken("AMOUNTTOMATOTOKEN", amountOfTomato.ToString(), false);
+            Lean.Localization.LeanLocalization.SetToken("AMOUNTLETTUCETOKEN", amountOfLettuce.ToString(), false);
+            Lean.Localization.LeanLocalization.SetToken("AMOUNTCHICKENTOKEN", amountOfChicken.ToString(), false);
+            Lean.Localization.LeanLocalization.SetToken("AMOUNTFISHTOKEN", amountOfFish.ToString(), false);
         }
 
         #endregion

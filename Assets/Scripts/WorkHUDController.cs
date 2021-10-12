@@ -30,7 +30,7 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowWorkHUDCavas() {
+        private void ShowWorkHUDCanvas() {
             if(_gameplayManager.TimePerMinute > 840) {
                 Debug.Log("No tiene suficeinte tiempo");
                 return;
@@ -46,7 +46,7 @@ namespace HealthyLife {
             _workHUDCanvas.enabled = true;
         }
 
-        private void HideWorkHUDCavas() {
+        private void HideWorkHUDCanvas() {
             _workHUDCanvas.enabled = false;
         }
 
@@ -58,19 +58,19 @@ namespace HealthyLife {
             _gameplayManager.StartWorkActivity(20, 30, 600, 80);
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HideWorkHUDCavas();
+            HideWorkHUDCanvas();
         }
 
         public void OnClicNoButton() {
-            HideWorkHUDCavas();
+            HideWorkHUDCanvas();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowWorkHUDEvent += ShowWorkHUDCavas;
+            EventObserver.ShowWorkHUDEvent += ShowWorkHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowWorkHUDEvent -= ShowWorkHUDCavas;
+            EventObserver.ShowWorkHUDEvent -= ShowWorkHUDCanvas;
         }
 
         #endregion

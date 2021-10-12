@@ -29,11 +29,11 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowSleepHUDCavas() {
+        private void ShowSleepHUDCanvas() {
             _sleepHUDCanvas.enabled = true;
         }
 
-        private void HideSleepHUDCavas() {
+        private void HideSleepHUDCanvas() {
             _sleepHUDCanvas.enabled = false;
         }
 
@@ -45,19 +45,19 @@ namespace HealthyLife {
             _gameplayManager.StartSleepActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
-            HideSleepHUDCavas();
+            HideSleepHUDCanvas();
         }
 
         public void OnClicNoButton() {
-            HideSleepHUDCavas();
+            HideSleepHUDCanvas();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowSleepHUDEvent += ShowSleepHUDCavas;
+            EventObserver.ShowSleepHUDEvent += ShowSleepHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowSleepHUDEvent -= ShowSleepHUDCavas;
+            EventObserver.ShowSleepHUDEvent -= ShowSleepHUDCanvas;
         }
 
         #endregion

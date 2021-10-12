@@ -115,6 +115,10 @@ namespace HealthyLife {
             EventObserver.ShowPickUpDeliveryHUDEvent();
         }
 
+        private void CallShowFridgeHUDEvent() {
+            EventObserver.ShowFridgeHUDEvent();
+        }
+
         #endregion
 
         #region Internal methods
@@ -185,6 +189,10 @@ namespace HealthyLife {
 
         internal void AssignShowPickUpDeliveryHUDEvent() {
             _showHUDFunction = CallShowPickUpDeliveryHUDEvent;
+        }
+
+        internal void AssignShowFridgeHUDEvent() {
+            _showHUDFunction = CallShowFridgeHUDEvent;
         }
 
         #endregion

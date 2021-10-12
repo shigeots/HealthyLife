@@ -45,7 +45,10 @@ namespace HealthyLife {
         }
 
         public void OnClicCheckFridgeButton() {
-            _gameplayManager.StartCheckFridgeActivity();
+            //_gameplayManager.StartCheckFridgeActivity();
+            _gameplayManager.CheckFridge();
+            _playerCharacterController.AssignShowFridgeHUDEvent();
+            _playerCharacterController.GoToTheFridge();
         }
 
         public void OnClicWatchTVButton() {

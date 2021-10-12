@@ -30,11 +30,11 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowPickUpDeliveryHUDCavas() {
+        private void ShowPickUpDeliveryHUDCanvas() {
             _pickUpDeliveryHUDCanvas.enabled = true;
         }
 
-        private void HidePickUpDeliveryHUDCavas() {
+        private void HidePickUpDeliveryHUDCanvas() {
             _pickUpDeliveryHUDCanvas.enabled = false;
         }
 
@@ -43,18 +43,18 @@ namespace HealthyLife {
         #region Public methods
 
         public void OnClicCloseButton() {
-            HidePickUpDeliveryHUDCavas();
+            HidePickUpDeliveryHUDCanvas();
             _gameplayManager.ThereAreFood = true;
             _activityHUDController.ShowFoodDeliveryButton();
             _deliveryManCharacterController.GoToTheOutOfCameraPoint();
         }
 
         public void SubscribeMethodsToEvents() {
-            EventObserver.ShowPickUpDeliveryHUDEvent += ShowPickUpDeliveryHUDCavas;
+            EventObserver.ShowPickUpDeliveryHUDEvent += ShowPickUpDeliveryHUDCanvas;
         }
 
         public void UnsubscribeMethodsToEvents() {
-            EventObserver.ShowPickUpDeliveryHUDEvent -= ShowPickUpDeliveryHUDCavas;
+            EventObserver.ShowPickUpDeliveryHUDEvent -= ShowPickUpDeliveryHUDCanvas;
         }
 
         #endregion
