@@ -107,6 +107,14 @@ namespace HealthyLife {
             EventObserver.ShowWatchTVHUDEvent();
         }
 
+        private void CallShowFoodDeliveryHUDEvent() {
+            EventObserver.ShowDeliveryFoodHUDEvent();
+        }
+
+        private void CallShowPickUpDeliveryHUDEvent() {
+            EventObserver.ShowPickUpDeliveryHUDEvent();
+        }
+
         #endregion
 
         #region Internal methods
@@ -169,6 +177,14 @@ namespace HealthyLife {
 
         internal void AssignShowWatchTVHUDEvent() {
             _showHUDFunction = CallShowWatchTVHUDEvent;
+        }
+
+        internal void AssignShowFoodDeliveryHUDEvent() {
+            _showHUDFunction = CallShowFoodDeliveryHUDEvent;
+        }
+
+        internal void AssignShowPickUpDeliveryHUDEvent() {
+            _showHUDFunction = CallShowPickUpDeliveryHUDEvent;
         }
 
         #endregion

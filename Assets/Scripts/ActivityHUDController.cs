@@ -10,6 +10,26 @@ namespace HealthyLife {
 
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
+        [SerializeField] private DeliveryManCharacterController _deliveryManCharacterController;
+
+        [SerializeField] private GameObject _foodDeliveryButton;
+        [SerializeField] private GameObject _pickUpDeliveryButton;
+
+        #endregion
+
+        #region Internal methods
+
+        internal void ShowFoodDeliveryButton()
+        {
+            _foodDeliveryButton.SetActive(true);
+            _pickUpDeliveryButton.SetActive(false);
+        }
+
+        internal void HideFoodDeliveryButton()
+        {
+            _foodDeliveryButton.SetActive(false);
+            _pickUpDeliveryButton.SetActive(true);
+        }
 
         #endregion
 
@@ -77,6 +97,33 @@ namespace HealthyLife {
                 Debug.Log("No es fin de semana o ");
             }
             */
+            //_gameplayManager.StartGoParttingActivity();
+        }
+
+        public void OnClickFoodDelivieryButton() {
+            
+            if(!_gameplayManager.ThereAreFood && !_gameplayManager.OrderedFoodDelivery) {
+                _playerCharacterController.AssignShowFoodDeliveryHUDEvent();
+                _playerCharacterController.GoToTheInnerDoor();
+            } else {
+                Debug.Log("Ya tiene comida en la mesa o pidio delivery");
+            }
+            
+
+            //_gameplayManager.StartGoParttingActivity();
+        }
+
+        public void OnClickPickUpDeliveryButton() {
+            
+            if(_deliveryManCharacterController.DeliveryArrived) {
+                _playerCharacterController.AssignShowPickUpDeliveryHUDEvent();
+                _playerCharacterController.GoToTheInnerDoor();
+                _gameplayManager.OrderedFoodDelivery = false;
+            } else {
+                Debug.Log("El pedido aun no ha llegado");
+            }
+            
+
             //_gameplayManager.StartGoParttingActivity();
         }
 

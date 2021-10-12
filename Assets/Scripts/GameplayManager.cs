@@ -12,6 +12,7 @@ namespace HealthyLife {
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
+        [SerializeField] private DeliveryManCharacterController _deliveryManCharacterController;
     
         [SerializeField] private Weekday _currentWeekday = Weekday.Monday;
         [SerializeField] private List<Weekday> _weekdays = new List<Weekday>();
@@ -27,6 +28,8 @@ namespace HealthyLife {
         [SerializeField] private int _energyForNextDay = 0;
         [SerializeField] private Food _foodForEat = null;
         [SerializeField] private bool _thereAreFood = false;
+        [SerializeField] private bool _orderedFoodDelivery = false;
+        [SerializeField] private int _waitingTimeForDelivery = 0;
 
         #endregion
 
@@ -45,6 +48,8 @@ namespace HealthyLife {
         public int EnergyForNextDay { get => _energyForNextDay; set => _energyForNextDay = value; }
         public bool ThereAreFood { get => _thereAreFood; set => _thereAreFood = value; }
         public Food FoodForEat { get => _foodForEat; set => _foodForEat = value; }
+        public bool OrderedFoodDelivery { get => _orderedFoodDelivery; set => _orderedFoodDelivery = value; }
+        public int WaitingTimeForDelivery { get => _waitingTimeForDelivery; set => _waitingTimeForDelivery = value; }
 
         #endregion
 
@@ -59,9 +64,9 @@ namespace HealthyLife {
             _weekdays.Add(Weekday.Saturday);
             _weekdays.Add(Weekday.Sunday);
 
-            //FoodForEat = null;
-            ThereAreFood = true;
-            FoodForEat = new JunkFood("Hamburguer", 2, 50, 20, 60);
+            FoodForEat = null;
+            //ThereAreFood = true;
+            //FoodForEat = new JunkFood("Hamburguer", 2, 50, 20, 60);
             //List<Ingredient> ingredients = new List<Ingredient>();
             //FoodForEat = new HealthyFood("Ensalda", 0, 50, 20, ingredients);
 
@@ -109,7 +114,20 @@ namespace HealthyLife {
         private void IncreaseMoreMinutes(int minutes) {
             TimePerMinute += minutes;
 
+            if(OrderedFoodDelivery) {
+                ReduceWaitingTimeForDelivery(minutes);
+            }
+            
             CalculateHourAndMinute();
+        }
+
+        private void ReduceWaitingTimeForDelivery(int minutes) {
+
+            WaitingTimeForDelivery -= minutes;
+            
+            if(WaitingTimeForDelivery <= 0) {
+                _deliveryManCharacterController.GoToTheOuterDoor();
+            }
         }
 
         private void IncreaseMoney(int money) {
@@ -239,6 +257,10 @@ namespace HealthyLife {
             IncreaseHappiness(FoodForEat.Happiness);
             IncreaseWeight(FoodForEat.Weight);
 
+            ThereAreFood = false;
+            OrderedFoodDelivery = false;
+
+
             /*
             Type type = FoodForEat.GetType();
 
@@ -278,6 +300,13 @@ namespace HealthyLife {
             DecreaseEnergyForToday(25);
             IncreaseMoreMinutes(480);
             DecreaseMoney(160);
+        }
+
+        internal void StartFoodDeliveryActivity(JunkFood junkFood) {
+            OrderedFoodDelivery = true;
+            WaitingTimeForDelivery = 120;
+            _foodForEat = junkFood;
+            DecreaseMoney(junkFood.Cost);
         }
 
         #endregion
