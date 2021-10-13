@@ -119,6 +119,10 @@ namespace HealthyLife {
             EventObserver.ShowFridgeHUDEvent();
         }
 
+        private void CallShowCookHUDEvent() {
+            EventObserver.ShowCookHUDEvent();
+        }
+
         #endregion
 
         #region Internal methods
@@ -193,6 +197,10 @@ namespace HealthyLife {
 
         internal void AssignShowFridgeHUDEvent() {
             _showHUDFunction = CallShowFridgeHUDEvent;
+        }
+
+        internal void AssignShowCookHUDEvent() {
+            _showHUDFunction = CallShowCookHUDEvent;
         }
 
         #endregion

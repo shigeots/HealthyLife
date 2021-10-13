@@ -75,7 +75,13 @@ namespace HealthyLife {
         }
 
         public void OnClickCookButton() {
-            _gameplayManager.StartCookActivity();
+            if(!_gameplayManager.ThereAreFood && !_gameplayManager.OrderedFoodDelivery) {
+                //_gameplayManager.StartCookActivity();
+                _playerCharacterController.AssignShowCookHUDEvent();
+                _playerCharacterController.GoToTheKitchen();
+            } else {
+                Debug.Log("Ya tiene comida en la mesa o pidio delivery");
+            }
         }
 
         public void OnClickExerciseButton() {

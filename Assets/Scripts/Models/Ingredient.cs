@@ -22,4 +22,18 @@ namespace HealthyLife {
         public string Name { get => _name; set => _name = value; }
         public int Cost { get => _cost; set => _cost = value; }
     }
+
+    internal class IngredientNameComparer : IEqualityComparer<Ingredient> {
+
+        public bool Equals(Ingredient x, Ingredient y) {
+            if(string.Equals(x.Name, y.Name, StringComparison.OrdinalIgnoreCase)) {
+                return true;
+            }
+            return false;
+        }
+
+        public int GetHashCode(Ingredient obj) {
+            return obj.Name.GetHashCode();
+        }
+    }
 }

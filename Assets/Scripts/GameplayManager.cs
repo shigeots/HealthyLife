@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -77,14 +78,13 @@ namespace HealthyLife {
             _weekdays.Add(Weekday.Sunday);
 
             FoodForEat = null;
-            //ThereAreFood = true;
 
-            _fridge.Add(new Ingredient("Onion",5));
-            _fridge.Add(new Ingredient("Onion",5));
-            _fridge.Add(new Ingredient("Tomato",10));
-            _fridge.Add(new Ingredient("Lettus",6));
-            _fridge.Add(new Ingredient("Chicken",15));
-            _fridge.Add(new Ingredient("Fish",20));
+            _fridge.Add(new Ingredient("Onion",2));
+            _fridge.Add(new Ingredient("Onion",2));
+            _fridge.Add(new Ingredient("Lettuce",3));
+            _fridge.Add(new Ingredient("Chicken",18));
+            _fridge.Add(new Ingredient("Fish",22));
+            _fridge.Add(new Ingredient("Fish",22));
 
             ChangeTheTimeTo7();
         }
@@ -229,6 +229,18 @@ namespace HealthyLife {
             Lean.Localization.LeanLocalization.SetToken("ENERGYTOMORROWTOKEN", EnergyForNextDay.ToString(), false);
         }
 
+        private void RemoveIngredientsFromTheFridge(HealthyFood healthyFood) {
+
+            foreach(Ingredient foodIngredient in healthyFood.Ingredients) {
+
+                var foodToEliminate = _fridge.FirstOrDefault(x => x.Name == foodIngredient.Name);
+
+                if(foodToEliminate != null) {
+                    _fridge.Remove(foodToEliminate);
+                }
+            }
+        }
+
         #endregion
 
         #region Internal methods
@@ -297,8 +309,11 @@ namespace HealthyLife {
 
         }
 
-        internal void StartCookActivity() {
-            _playerCharacterController.GoToTheKitchen();
+        internal void StartCookActivity(HealthyFood healthyFood) {
+            IncreaseMoreMinutes(healthyFood.PreparationTime);
+            RemoveIngredientsFromTheFridge(healthyFood);
+            _foodForEat = healthyFood;
+            ThereAreFood = true;
         }
 
         internal void StartExerciseActivity() {

@@ -23,7 +23,7 @@ namespace HealthyLife {
 
         #endregion
 
-        [SerializeField] JunkFood friedChicken = new JunkFood("Fried chicken", 3, 40, 4, 20);
+        [SerializeField] JunkFood friedChicken = new JunkFood("Fried chicken", 3, 40, 4, 25);
         [SerializeField] JunkFood pizza = new JunkFood("Pizza", 4, 50, 10, 40);
         [SerializeField] JunkFood hamburger = new JunkFood("Hamburger", 3, 60, 18, 55);
 

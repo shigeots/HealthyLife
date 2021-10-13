@@ -28,5 +28,7 @@ namespace HealthyLife {
 
         public static Action ShowFridgeHUDEvent;
 
+        public static Action ShowCookHUDEvent;
+
     }
 }
