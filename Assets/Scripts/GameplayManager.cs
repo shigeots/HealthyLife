@@ -23,7 +23,7 @@ namespace HealthyLife {
         [SerializeField] private int _min;
         [SerializeField] private int _timePerMinute;
         [SerializeField] private int _happiness = 100;
-        [SerializeField] private int _money = 150;
+        [SerializeField] private int _money = 100;
         [SerializeField] private int _weight = 80;
         [SerializeField] private int _energyForToday = 100;
         [SerializeField] private int _energyForNextDay = 0;
@@ -78,14 +78,14 @@ namespace HealthyLife {
             _weekdays.Add(Weekday.Sunday);
 
             FoodForEat = null;
-
+/*
             _fridge.Add(new Ingredient("Onion",2));
             _fridge.Add(new Ingredient("Onion",2));
             _fridge.Add(new Ingredient("Lettuce",3));
             _fridge.Add(new Ingredient("Chicken",18));
             _fridge.Add(new Ingredient("Fish",22));
             _fridge.Add(new Ingredient("Fish",22));
-
+*/
             ChangeTheTimeTo7();
         }
 
@@ -259,7 +259,7 @@ namespace HealthyLife {
         }
 
         internal void StartCheckFridgeActivity() {
-            _playerCharacterController.GoToTheFridge();
+            //_playerCharacterController.GoToTheFridge();
             
         }
 
@@ -317,13 +317,18 @@ namespace HealthyLife {
         }
 
         internal void StartExerciseActivity() {
-            DecreaseEnergyForToday(30);
+            DecreaseEnergyForToday(25);
             IncreaseMoreMinutes(120);
             DecreaseWeight(3);
+            DecreaseHappiness(10);
         }
 
-        internal void StartShopActivity() {
-            _playerCharacterController.GoToTheInnerDoor();
+        internal void StartShoppingActivity(List<Ingredient> ingredients, int cost) {
+            //_playerCharacterController.GoToTheInnerDoor();
+            AddIngredientsToTheFridge(ingredients);
+            DecreaseMoney(cost);
+            DecreaseEnergyForToday(10);
+            IncreaseMoreMinutes(60);
         }
 
         internal void StartGoParttingActivity() {
@@ -371,6 +376,12 @@ namespace HealthyLife {
             Lean.Localization.LeanLocalization.SetToken("AMOUNTLETTUCETOKEN", amountOfLettuce.ToString(), false);
             Lean.Localization.LeanLocalization.SetToken("AMOUNTCHICKENTOKEN", amountOfChicken.ToString(), false);
             Lean.Localization.LeanLocalization.SetToken("AMOUNTFISHTOKEN", amountOfFish.ToString(), false);
+        }
+
+        internal void AddIngredientsToTheFridge(List<Ingredient> newIngredients) {
+            foreach(var newIngredient in newIngredients) {
+                Fridge.Add(newIngredient);
+            }
         }
 
         #endregion

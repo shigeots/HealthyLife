@@ -91,7 +91,9 @@ namespace HealthyLife {
         }
 
         public void OnClickGoShoppingButton() {
-            _gameplayManager.StartShopActivity();
+            //_gameplayManager.StartShopActivity();
+            _playerCharacterController.AssignShowShoppingHUDEvent();
+            _playerCharacterController.GoToTheInnerDoor();
         }
 
         public void OnClickGoPartingButton() {

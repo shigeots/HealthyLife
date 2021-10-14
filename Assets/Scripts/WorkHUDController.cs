@@ -55,7 +55,7 @@ namespace HealthyLife {
         #region Public methods
 
         public void OnClicYesButton() {
-            _gameplayManager.StartWorkActivity(20, 30, 600, 80);
+            _gameplayManager.StartWorkActivity(30, 30, 600, 80);
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
             HideWorkHUDCanvas();
