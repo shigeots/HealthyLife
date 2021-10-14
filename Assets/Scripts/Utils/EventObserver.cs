@@ -32,5 +32,12 @@ namespace HealthyLife {
 
         public static Action ShowShoppingHUDEvent;
 
+        public static Action ShowMainMenuScreenEvent;
+
+        public static Action ShowHowToPlayScreenEvent;
+
+        public static Action ShowOptionsScreenEvent;
+
+        public static Action ShowCreditsScreenEvent;
     }
 }

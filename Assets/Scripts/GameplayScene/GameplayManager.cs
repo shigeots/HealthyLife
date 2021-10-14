@@ -89,6 +89,10 @@ namespace HealthyLife {
             ChangeTheTimeTo7();
         }
 
+        private void Start() {
+            AssignLanguage();
+        }
+
         #endregion
 
         #region Private methods
@@ -239,6 +243,10 @@ namespace HealthyLife {
                     _fridge.Remove(foodToEliminate);
                 }
             }
+        }
+
+        private void AssignLanguage() {
+            Lean.Localization.LeanLocalization.SetCurrentLanguageAll(PlayerPrefsUtil.GetLanguage());
         }
 
         #endregion
