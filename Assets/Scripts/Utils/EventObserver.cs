@@ -39,5 +39,9 @@ namespace HealthyLife {
         public static Action ShowOptionsScreenEvent;
 
         public static Action ShowCreditsScreenEvent;
+
+        public static Action ShowWinScreenEvent;
+
+        public static Action ShowLoseScreenEvent;
     }
 }

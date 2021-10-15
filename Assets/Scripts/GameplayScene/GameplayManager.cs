@@ -78,14 +78,12 @@ namespace HealthyLife {
             _weekdays.Add(Weekday.Sunday);
 
             FoodForEat = null;
-/*
+
             _fridge.Add(new Ingredient("Onion",2));
             _fridge.Add(new Ingredient("Onion",2));
             _fridge.Add(new Ingredient("Lettuce",3));
-            _fridge.Add(new Ingredient("Chicken",18));
             _fridge.Add(new Ingredient("Fish",22));
-            _fridge.Add(new Ingredient("Fish",22));
-*/
+
             ChangeTheTimeTo7();
         }
 
@@ -99,6 +97,8 @@ namespace HealthyLife {
 
         private void NextDay() {
             Day++;
+
+            CheckEndGame();
 
             Lean.Localization.LeanLocalization.SetToken("DAYNUMBERTOKEN", Day.ToString(), false);
         }
@@ -247,6 +247,15 @@ namespace HealthyLife {
 
         private void AssignLanguage() {
             Lean.Localization.LeanLocalization.SetCurrentLanguageAll(PlayerPrefsUtil.GetLanguage());
+        }
+
+        private void CheckEndGame() {
+            if(Day == 15 && Weight <= 50) {
+                EventObserver.ShowWinScreenEvent();
+            }
+            if(Day == 15 && Weight > 50) {
+                EventObserver.ShowLoseScreenEvent();
+            }
         }
 
         #endregion

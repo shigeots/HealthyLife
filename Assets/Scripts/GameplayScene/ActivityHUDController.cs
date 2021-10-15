@@ -36,6 +36,10 @@ namespace HealthyLife {
         #region Public methods
 
         public void OnClicWorkButton() {
+            if(_gameplayManager.CurrentWeekday == Weekday.Saturday || _gameplayManager.CurrentWeekday == Weekday.Sunday ) {
+                Debug.Log("No tienes trabajo los fines de semana");
+                return;
+            }
             if(_gameplayManager.Happiness >= 20 && _gameplayManager.EnergyForToday >= 30) {
                 _playerCharacterController.AssignShowWorkHUDEvent();
                 _playerCharacterController.GoToTheInnerDoor();
