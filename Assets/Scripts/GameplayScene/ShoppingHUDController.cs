@@ -14,6 +14,7 @@ namespace HealthyLife {
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
+        [SerializeField] private PlayerCharacterController _playerCharacterController;
 
         [SerializeField] TextMeshProUGUI _onionUnitText;
         [SerializeField] TextMeshProUGUI _lettuceUnitText;
@@ -212,6 +213,7 @@ namespace HealthyLife {
                 _gameplayManager.StartShoppingActivity(_ingredientsToBuy, _totalCost);
                 _calendarHUDController.UpdateCalendarHUD();
                 _gameStatsHUDController.UpdateGameStatsHUD();
+                _playerCharacterController.PlayInnerDoorSound();
                 HideShoppingHUDCanvas();
             } else {
                 Debug.Log("No hay dinero");

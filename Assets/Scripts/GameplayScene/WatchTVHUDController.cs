@@ -14,6 +14,7 @@ namespace HealthyLife {
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
+        [SerializeField] private PlayerCharacterController _playerCharacterController;
 
         [SerializeField] TextMeshProUGUI _watchTVDescriptionText;
         [SerializeField] TextMeshProUGUI _30minutesDescriptionText;
@@ -79,6 +80,7 @@ namespace HealthyLife {
             _gameplayManager.StartWatchTV30MinutesActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
+            _playerCharacterController.PlayTVOnSound();
             HideWatchTVHUDCanvas();
         }
 
@@ -86,6 +88,7 @@ namespace HealthyLife {
             _gameplayManager.StartWatchTV1HourActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
+            _playerCharacterController.PlayTVOnSound();
             HideWatchTVHUDCanvas();
         }
 
@@ -93,6 +96,7 @@ namespace HealthyLife {
             _gameplayManager.StartWatchTV2HoursActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
+            _playerCharacterController.PlayTVOnSound();
             HideWatchTVHUDCanvas();
         }
 

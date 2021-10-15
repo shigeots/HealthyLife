@@ -12,6 +12,7 @@ namespace HealthyLife {
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
+        [SerializeField] private PlayerCharacterController _playerCharacterController;
 
         #endregion
 
@@ -45,6 +46,7 @@ namespace HealthyLife {
             _gameplayManager.StartSleepActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
+            _playerCharacterController.PlayWakeUpSound();
             HideSleepHUDCanvas();
         }
 

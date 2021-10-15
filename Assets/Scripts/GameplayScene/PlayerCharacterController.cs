@@ -15,6 +15,15 @@ namespace HealthyLife {
 
         [SerializeField] private NavMeshAgent _playerNavMeshAgent;
         [SerializeField] private Rigidbody2D _playerRigidbody2D;
+        [SerializeField] private AudioSource _playerAudioSource;
+
+        [SerializeField] private AudioClip _walkAudioClip;
+        [SerializeField] private AudioClip _chopAudioClip;
+        [SerializeField] private AudioClip _wakeUpAudioClip;
+        [SerializeField] private AudioClip _eatAudioClip;
+        [SerializeField] private AudioClip _fridgeDoorOpenAudioClip;
+        [SerializeField] private AudioClip _tvSwitchOnAudioClip;
+        [SerializeField] private AudioClip _doorAudioClip;
 
         [SerializeField] private DestinationPoint _fridgePoint;
         [SerializeField] private DestinationPoint _tablePoint;
@@ -76,7 +85,7 @@ namespace HealthyLife {
                 LookAtTheDestination(_thePointOfLookTransform);
                 _reachedTheDestination = true;
                 _moveToCharacter = false;
-
+                StopSound();
                 CallShowHUDEvent(_showHUDFunction);
             } else {
                 _reachedTheDestination = false;
@@ -113,10 +122,12 @@ namespace HealthyLife {
 
         private void CallShowPickUpDeliveryHUDEvent() {
             EventObserver.ShowPickUpDeliveryHUDEvent();
+            PlayInnerDoorSound();
         }
 
         private void CallShowFridgeHUDEvent() {
             EventObserver.ShowFridgeHUDEvent();
+            PlayFridgeSound();
         }
 
         private void CallShowCookHUDEvent() {
@@ -127,6 +138,24 @@ namespace HealthyLife {
             EventObserver.ShowShoppingHUDEvent();
         }
 
+        private void StopSound() {
+            _playerAudioSource.Stop();
+        }
+
+        private void PlayWalkSound() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.loop = true;
+            _playerAudioSource.clip = _walkAudioClip;
+            _playerAudioSource.Play();
+        }
+
+        private void PlayFridgeSound() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.loop = false;
+            _playerAudioSource.clip = _fridgeDoorOpenAudioClip;
+            _playerAudioSource.Play();
+        }
+
         #endregion
 
         #region Internal methods
@@ -135,36 +164,42 @@ namespace HealthyLife {
             _moveToCharacter = true;
             _destinationPointTransform = _innerDoorPoint.GetDestinationPoint();
             _thePointOfLookTransform = _innerDoorPoint.GetLookPoint();
+            PlayWalkSound();
         }
 
         internal void GoToTheFridge() {
             _moveToCharacter = true;
             _destinationPointTransform = _fridgePoint.GetDestinationPoint();
             _thePointOfLookTransform = _fridgePoint.GetLookPoint();
+            PlayWalkSound();
         }
 
         internal void GoToTheKitchen() {
             _moveToCharacter = true;
             _destinationPointTransform = _kitchenPoint.GetDestinationPoint();
             _thePointOfLookTransform = _kitchenPoint.GetLookPoint();
+            PlayWalkSound();
         }
 
         internal void GoToTheTable() {
             _moveToCharacter = true;
             _destinationPointTransform = _tablePoint.GetDestinationPoint();
             _thePointOfLookTransform = _tablePoint.GetLookPoint();
+            PlayWalkSound();
         }
 
         internal void GoToTheBed() {
             _moveToCharacter = true;
             _destinationPointTransform = _bedPoint.GetDestinationPoint();
             _thePointOfLookTransform = _bedPoint.GetLookPoint();
+            PlayWalkSound();
         }
 
         internal void GoToTheTelevision() {
             _moveToCharacter = true;
             _destinationPointTransform = _televisionPoint.GetDestinationPoint();
             _thePointOfLookTransform = _televisionPoint.GetLookPoint();
+            PlayWalkSound();
         }
 
         internal void AssignShowWorkHUDEvent() {
@@ -209,6 +244,41 @@ namespace HealthyLife {
 
         internal void AssignShowShoppingHUDEvent() {
             _showHUDFunction = CallShowShoppingHUDEvent;
+        }
+
+        internal void PlayCookSound() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.loop = false;
+            _playerAudioSource.clip = _chopAudioClip;
+            _playerAudioSource.Play();
+        }
+
+        internal void PlayEatSound() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.loop = false;
+            _playerAudioSource.clip = _eatAudioClip;
+            _playerAudioSource.Play();
+        }
+
+        internal void PlayWakeUpSound() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.loop = false;
+            _playerAudioSource.clip = _wakeUpAudioClip;
+            _playerAudioSource.Play();
+        }
+
+        internal void PlayTVOnSound() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.loop = false;
+            _playerAudioSource.clip = _tvSwitchOnAudioClip;
+            _playerAudioSource.Play();
+        }
+
+        internal void PlayInnerDoorSound() {
+            _playerAudioSource.Stop();
+            _playerAudioSource.loop = false;
+            _playerAudioSource.clip = _doorAudioClip;
+            _playerAudioSource.Play();
         }
 
         #endregion

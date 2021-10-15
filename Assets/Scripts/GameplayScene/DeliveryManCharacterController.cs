@@ -14,6 +14,7 @@ namespace HealthyLife {
 
         [SerializeField] private NavMeshAgent _characterNavMeshAgent;
         [SerializeField] private Rigidbody2D _characterRigidbody2D;
+        [SerializeField] private AudioSource _characterAudioSource;
 
         [SerializeField] private DestinationPoint _outerDoorPoint;
         [SerializeField] private DestinationPoint _outOfCameraPoint;
@@ -68,6 +69,7 @@ namespace HealthyLife {
         private void CheckDeliveryHasArrived() {
             if(_isDelivery) {
                 DeliveryArrived = true;
+                PlayDoorBellSound();
             }
         }
 
@@ -84,6 +86,11 @@ namespace HealthyLife {
             } else {
                 _reachedTheDestination = false;
             }
+        }
+
+        private void PlayDoorBellSound() {
+            _characterAudioSource.Stop();
+            _characterAudioSource.Play();
         }
 
         #endregion

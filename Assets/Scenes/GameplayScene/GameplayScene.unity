@@ -523,6 +523,7 @@ MonoBehaviour:
   _gameplayManager: {fileID: 1101632342}
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
+  _playerCharacterController: {fileID: 1055505807}
   _watchTVDescriptionText: {fileID: 170059690}
   _30minutesDescriptionText: {fileID: 973928781}
   _1hourDescriptionText: {fileID: 180007989}
@@ -2550,7 +2551,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 494b0df5a4400374ebf9d9e2b9082c8c, type: 2}
   m_audioClip: {fileID: 8300000, guid: b19880f1b2536f54bae9166bd9e28393, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3684,6 +3685,7 @@ MonoBehaviour:
   _gameplayManager: {fileID: 1101632342}
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
+  _playerCharacterController: {fileID: 1055505807}
   _onionUnitText: {fileID: 297250989}
   _lettuceUnitText: {fileID: 914193211}
   _tomatoUnitText: {fileID: 1866705983}
@@ -6902,6 +6904,7 @@ MonoBehaviour:
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
   _activityHUDController: {fileID: 2137381160}
+  _playerCharacterController: {fileID: 1055505807}
   _cookDescriptionText: {fileID: 1805891317}
   _saladDescriptionText: {fileID: 498490484}
   _panSearedChickenDescriptionText: {fileID: 1011554421}
@@ -17321,6 +17324,7 @@ MonoBehaviour:
   _gameplayManager: {fileID: 1101632342}
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
+  _playerCharacterController: {fileID: 1055505807}
 --- !u!114 &902422260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19675,6 +19679,7 @@ GameObject:
   - component: {fileID: 1055505806}
   - component: {fileID: 1055505805}
   - component: {fileID: 1055505808}
+  - component: {fileID: 1055505803}
   - component: {fileID: 1055505807}
   m_Layer: 0
   m_Name: PlayerCharacter
@@ -19683,6 +19688,102 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &1055505803
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055505802}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 06f79d55723bedf428a1c69a3dad2cdb, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1055505804
 Transform:
   m_ObjectHideFlags: 0
@@ -19751,6 +19852,14 @@ MonoBehaviour:
   _thePointOfLookTransform: {fileID: 33510147}
   _playerNavMeshAgent: {fileID: 1055505808}
   _playerRigidbody2D: {fileID: 1055505806}
+  _playerAudioSource: {fileID: 1055505803}
+  _walkAudioClip: {fileID: 8300000, guid: 24467fa5ccb82db4e84fe1d7c98ee0e3, type: 3}
+  _chopAudioClip: {fileID: 8300000, guid: fc19dc337948e6c49b994019380a1836, type: 3}
+  _wakeUpAudioClip: {fileID: 8300000, guid: cbb4a038dc5ddce4daa7c44d43e08521, type: 3}
+  _eatAudioClip: {fileID: 8300000, guid: e664aeb3732da264db245c11b9bd7f6f, type: 3}
+  _fridgeDoorOpenAudioClip: {fileID: 8300000, guid: 548a2793e854525419ec190031564793, type: 3}
+  _tvSwitchOnAudioClip: {fileID: 8300000, guid: 1a961f5005ac4c84ca828db59b8911ca, type: 3}
+  _doorAudioClip: {fileID: 8300000, guid: 2f670befff94cc04ea82027bb6298ad3, type: 3}
   _fridgePoint: {fileID: 1104374193}
   _tablePoint: {fileID: 799312848}
   _bedPoint: {fileID: 1908863587}
@@ -19770,7 +19879,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.165
-  m_Speed: 2.2
+  m_Speed: 2.3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -19862,6 +19971,7 @@ MonoBehaviour:
   _gameplayManager: {fileID: 1101632342}
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
+  _playerCharacterController: {fileID: 1055505807}
 --- !u!114 &1095239775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24662,6 +24772,7 @@ GameObject:
   - component: {fileID: 1473096026}
   - component: {fileID: 1473096024}
   - component: {fileID: 1473096023}
+  - component: {fileID: 1473096025}
   - component: {fileID: 1473096027}
   - component: {fileID: 1473096028}
   m_Layer: 0
@@ -24708,6 +24819,102 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!82 &1473096025
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473096022}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 06f79d55723bedf428a1c69a3dad2cdb, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 58e4de84a2f0ec147a5d6c9efbdc0fbd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1473096026
 Transform:
   m_ObjectHideFlags: 0
@@ -24733,7 +24940,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.165
-  m_Speed: 2.2
+  m_Speed: 2.3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -24761,6 +24968,7 @@ MonoBehaviour:
   _thePointOfLookTransform: {fileID: 1003055009}
   _characterNavMeshAgent: {fileID: 1473096027}
   _characterRigidbody2D: {fileID: 1473096024}
+  _characterAudioSource: {fileID: 1473096025}
   _outerDoorPoint: {fileID: 1948621325}
   _outOfCameraPoint: {fileID: 1330561240}
   _moveToCharacter: 0
@@ -28313,6 +28521,7 @@ MonoBehaviour:
   _gameplayManager: {fileID: 1101632342}
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
+  _playerCharacterController: {fileID: 1055505807}
 --- !u!1 &1696306680
 GameObject:
   m_ObjectHideFlags: 0
@@ -29811,6 +30020,7 @@ MonoBehaviour:
   _gameplayManager: {fileID: 1101632342}
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
+  _playerCharacterController: {fileID: 1055505807}
 --- !u!1 &1840193958
 GameObject:
   m_ObjectHideFlags: 0
@@ -29847,6 +30057,7 @@ MonoBehaviour:
   _gameplayManager: {fileID: 1101632342}
   _calendarHUDController: {fileID: 626495689}
   _gameStatsHUDController: {fileID: 879046820}
+  _playerCharacterController: {fileID: 1055505807}
 --- !u!114 &1840193960
 MonoBehaviour:
   m_ObjectHideFlags: 0

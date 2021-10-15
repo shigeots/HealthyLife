@@ -16,6 +16,7 @@ namespace HealthyLife {
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private ActivityHUDController _activityHUDController;
+        [SerializeField] private PlayerCharacterController _playerCharacterController;
 
         [SerializeField] TextMeshProUGUI _cookDescriptionText;
         [SerializeField] TextMeshProUGUI _saladDescriptionText;
@@ -118,6 +119,7 @@ namespace HealthyLife {
                 _gameplayManager.StartCookActivity(salad);
                 _calendarHUDController.UpdateCalendarHUD();
                 _gameStatsHUDController.UpdateGameStatsHUD();
+                _playerCharacterController.PlayCookSound();
                 HideCookHUDCanvas();
             } else {
                 Debug.Log("No hay ingrediente");
@@ -133,6 +135,7 @@ namespace HealthyLife {
                 _gameplayManager.StartCookActivity(panSearedChicken);
                 _calendarHUDController.UpdateCalendarHUD();
                 _gameStatsHUDController.UpdateGameStatsHUD();
+                _playerCharacterController.PlayCookSound();
                 HideCookHUDCanvas();
             } else {
                 Debug.Log("No hay ingrediente");
@@ -147,6 +150,7 @@ namespace HealthyLife {
                 _gameplayManager.StartCookActivity(panSearedFish);
                 _calendarHUDController.UpdateCalendarHUD();
                 _gameStatsHUDController.UpdateGameStatsHUD();
+                _playerCharacterController.PlayCookSound();
                 HideCookHUDCanvas();
             } else {
                 Debug.Log("No hay ingrediente");
