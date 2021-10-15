@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace HealthyLife {
@@ -14,6 +15,9 @@ namespace HealthyLife {
         [SerializeField] private Toggle _soundToggle;
         [SerializeField] private Toggle _englishToggle;
         [SerializeField] private Toggle _spanishToggle;
+
+        [SerializeField] private AudioMixer _musicAudioMixer;
+        [SerializeField] private AudioMixer _soundAudioMixer;
 
         private const string _englishLanguage = "English";
         private const string _spanishLanguage = "Spanish";
@@ -70,13 +74,17 @@ namespace HealthyLife {
         private void SetConfiguration() {
             if(_soundToggle.isOn == true) {
                 PlayerPrefsUtil.SetSound(true);
+                _soundAudioMixer.SetFloat("SoundVolume", 0);
             } else {
                 PlayerPrefsUtil.SetSound(false);
+                _soundAudioMixer.SetFloat("SoundVolume", -80);
             }
             if(_musicToggle.isOn == true) {
                 PlayerPrefsUtil.SetMusic(true);
+                _musicAudioMixer.SetFloat("MusicVolume", 0);
             } else {
                 PlayerPrefsUtil.SetMusic(false);
+                _musicAudioMixer.SetFloat("MusicVolume", -80);
             }
             if(_englishToggle.isOn == true) {
                 PlayerPrefsUtil.SetLanguage(_englishLanguage);
