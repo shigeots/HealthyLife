@@ -349,10 +349,10 @@ namespace HealthyLife {
         }
 
         internal void StartGoParttingActivity() {
-            IncreaseHappiness(50);
-            DecreaseEnergyForToday(25);
-            IncreaseMoreMinutes(480);
-            DecreaseMoney(160);
+            IncreaseHappiness(80);
+            DecreaseEnergyForToday(10);
+            IncreaseMoreMinutes(300);
+            DecreaseMoney(100);
         }
 
         internal void StartFoodDeliveryActivity(JunkFood junkFood) {
