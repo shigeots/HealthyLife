@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace HealthyLife {
 
@@ -9,6 +10,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _partingHUDCanvas;
+        [SerializeField] private GameObject _partingHUDPanel;
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
@@ -45,10 +47,12 @@ namespace HealthyLife {
             }
             
             _partingHUDCanvas.enabled = true;
+            _partingHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HidePartingHUDCanvas() {
-            _partingHUDCanvas.enabled = false;
+            _partingHUDPanel.transform.DOScale(0, 0.5f);
+            //_partingHUDCanvas.enabled = false;
         }
 
         #endregion

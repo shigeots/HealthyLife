@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 namespace HealthyLife {
 
@@ -11,6 +12,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _foodDeliveryHUDCanvas;
+        [SerializeField] private GameObject _foodDeliveryHUDPanel;
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
@@ -49,10 +51,12 @@ namespace HealthyLife {
             }*/
             
             _foodDeliveryHUDCanvas.enabled = true;
+            _foodDeliveryHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideFoodDeliveryHUDCanvas() {
-            _foodDeliveryHUDCanvas.enabled = false;
+            _foodDeliveryHUDPanel.transform.DOScale(0, 0.5f);
+            //_foodDeliveryHUDCanvas.enabled = false;
         }
 
         #endregion

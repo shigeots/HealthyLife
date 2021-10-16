@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 namespace HealthyLife {
     
@@ -10,6 +11,7 @@ namespace HealthyLife {
         #region Private properties
         
         [SerializeField] private Canvas _endGameScreenCanvas;
+        [SerializeField] private CanvasGroup _endGameScreenCanvasGroup;
 
         private const string _gameplaySceneName = "GameplayScene";
         private const string _MainMenuSceneName = "MainMenuScene";
@@ -20,6 +22,7 @@ namespace HealthyLife {
 
         protected void ShowEndGameScreen() {
             _endGameScreenCanvas.enabled = true;
+            _endGameScreenCanvasGroup.DOFade(1, 0.7f);
         }
 
         #endregion

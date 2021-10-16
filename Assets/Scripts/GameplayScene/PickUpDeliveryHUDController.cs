@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace HealthyLife {
 
@@ -9,6 +10,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _pickUpDeliveryHUDCanvas;
+        [SerializeField] private GameObject _pickUpDeliveryHUDPanel;
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
@@ -32,10 +34,12 @@ namespace HealthyLife {
 
         private void ShowPickUpDeliveryHUDCanvas() {
             _pickUpDeliveryHUDCanvas.enabled = true;
+            _pickUpDeliveryHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HidePickUpDeliveryHUDCanvas() {
-            _pickUpDeliveryHUDCanvas.enabled = false;
+            _pickUpDeliveryHUDPanel.transform.DOScale(0, 0.5f);
+            //_pickUpDeliveryHUDCanvas.enabled = false;
         }
 
         #endregion

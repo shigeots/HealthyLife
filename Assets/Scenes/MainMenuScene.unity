@@ -341,8 +341,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 116}
-  m_SizeDelta: {x: 500, y: 80}
+  m_AnchoredPosition: {x: 0, y: 75}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99006745
 MonoBehaviour:
@@ -904,7 +904,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ingl\xE9s"
+  m_text: English
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Actividades
+  m_text: Activities
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "C\xF3mo jugar"
+  m_text: How to play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.6
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1988,8 +1988,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -288}
-  m_SizeDelta: {x: 500, y: 80}
+  m_AnchoredPosition: {x: 0, y: -300}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506368650
 MonoBehaviour:
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Objetivo
+  m_text: Objective
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2397,8 +2397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -153}
-  m_SizeDelta: {x: 500, y: 80}
+  m_AnchoredPosition: {x: 0, y: -175}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &530008346
 MonoBehaviour:
@@ -2576,19 +2576,42 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "El jugador podr\xE1 realizar ciertas actividades.\r\n\nTrabajar: Gasta
-    30 de energ\xEDa, 30 de felicidad y 10 horas de tiempo. Gana 80 de dinero.\r\nEjercicio:
-    Gasta 25 de energ\xEDa, 10 de felicidad y 2 horas de tiempo. Pierde 3 de peso.\r\nCocinar:
-    Gasta los ingredientes y tiempo dependiendo de la comida a cocinar. Al terminar
-    podr\xE1 comer la comida.\r\nComer: Gasta 20 minutos de tiempo. Gana energ\xEDa,
-    felicidad y peso dependiendo de la comida.\r\nDormir: Se pasar\xE1 al siguiente
-    d\xEDa. Recuperar\xE1 la energ\xEDa correspondiente. Empezara el d\xEDa a las
-    7 de la ma\xF1ana.\nRevisar la nevera: Permite mostrar los ingredientes que cuenta
-    el jugador.\r\nSalir a comprar: Gasta 1 hora de tiempo y dinero dependiendo de
-    los ingredientes a comprar.\r\nPedir comida: Gasta dinero dependiendo de la comida
-    a pedir.\r\nRecoger pedido: Recoge el pedido para poder comer.\r\nMirar tele:
-    Gasta el tiempo. Gana felicidad dependiendo del tiempo que gasta.\r\nSalir a
-    fiesta: Gasta 10 de energ\xEDa, 100 de dinero y 5 horas de tiempo.\r"
+  m_text: 'The player will be able to carry out certain activities.
+
+
+    Work: Spend
+    30 energy, 30 happiness, and 10 hours of time. Earn 80 money.
+
+    Exercise:
+    Spend 25 energy, 10 happiness and 2 hours of time. Lose 3 in weight.
+
+    Cook:
+    Spend the ingredients and time depending on the food to be cooked. At the end
+    you can eat the food.
+
+    Eat: Spend 20 minutes of time. Gain energy, happiness
+    and weight depending on the food.
+
+    Sleep: It will happen the next day. It
+    will recover the corresponding energy. The day will start at 7 in the morning.
+
+    Check
+    the fridge: It allows to show the ingredients that the player counts.
+
+    Go
+    shopping: Spend 1 hour of time and money depending on the ingredients to buy.
+
+    Order
+    food: Spend money depending on the food to order.
+
+    Pick up order: Pick up
+    the order to eat.
+
+    Watch TV: Spend the time. Earn happiness depending on
+    the time you spend.
+
+    Going out to party: Spend 10 energy, 100 money and 5
+    hours of time.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2715,7 +2738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Creditos
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2742,7 +2765,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.6
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3005,7 +3028,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Recursos
+  m_text: Resources
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3263,28 +3286,32 @@ MonoBehaviour:
   - Language: English
     Text: 'Healthy life simulator is a resource management game.
 
+
       The goal
       of the game is to lose 30 kg of the character in 2 weeks. You will need to
-      do activities like exercise and eat healthy meals to reach the goal.
+      do activities like exercise and eat healthy food to reach the goal.
+
 
       Certain
       activities consume some of the character''s resources.
 
+
       The player will
       only be able to carry out the activities until 24:00.
+
 
       When you sleep,
       it will happen the next day. It will also change the amount of your energy
       today to the amount of energy for tomorrow.'
     Object: {fileID: 0}
   - Language: Spanish
-    Text: "Healthy life simulator es un juego de gesti\xF3n de recursos.\r\nEl objetivo
-      del juego es perder 30 kg del personaje en 2 semanas. Deber\xE1 realizar actividades
-      como ejercicio y comer comidas saludables para lograr la meta.\r\nCiertas actividades
-      consumen algunos de los recursos del personaje.\r\nEl jugador solo podr\xE1
-      realizar las actividades hasta las 24:00.\r\nAl dormir pasara al d\xEDa siguiente.
-      Adem\xE1s cambiara la cantidad de su energ\xEDa de hoy a la cantidad de energ\xEDa
-      para ma\xF1ana."
+    Text: "Healthy life simulator es un juego de gesti\xF3n de recursos.\r\n\nEl
+      objetivo del juego es perder 30 kg del personaje en 2 semanas. Deber\xE1 realizar
+      actividades como ejercicio y comer comidas saludables para lograr la meta.\r\n\nCiertas
+      actividades consumen algunos de los recursos del personaje.\r\n\nEl jugador
+      solo podr\xE1 realizar las actividades hasta las 24:00.\r\n\nAl dormir pasara
+      al d\xEDa siguiente. Adem\xE1s cambiara la cantidad de su energ\xEDa de hoy
+      a la cantidad de energ\xEDa para ma\xF1ana."
     Object: {fileID: 0}
 --- !u!1 &653511345
 GameObject:
@@ -3543,7 +3570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "C\xF3mo jugar"
+  m_text: How to play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3678,7 +3705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Idioma
+  m_text: Language
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3905,7 +3932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Salir del juego
+  m_text: Exit game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3932,7 +3959,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.6
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4170,9 +4197,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dise\xF1ador de juego:\r\n  Shigeo Tsukazan - Twitter @DevShigeo\n\r\nProgramador:\r\n 
-    Shigeo Tsukazan - Twitter @DevShigeo\n\r\nArte:\r\n  Kenney - https://www.kenney.nl/assets\r\n\r\nMusica
-    y sonido\r\n  https://www.zapsplat.com/\r\n  Komiku - https: //freemusicarchive.org/music/Komiku "
+  m_text: "Game designer:\r\n  Shigeo Tsukazan - Twitter @DevShigeo\r \n\r\nProgrammer:
+    \r\n  Shigeo Tsukazan - Twitter @DevShigeo\n\r\nArt:\r\n  Kenney - https://www.kenney.nl/assets\r\n\r\nMusic
+    and sound\r\n  https://www.zapsplat.com/\r\n  Komiku -https://freemusicarchive.org/music/Komiku"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4321,7 +4348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Creditos
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4456,7 +4483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Opciones
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4483,7 +4510,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.6
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4738,7 +4765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sonido
+  m_text: Sound
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4962,7 +4989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Espa\xF1ol"
+  m_text: Spanish
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5376,7 +5403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Opciones
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5600,7 +5627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volver
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6113,8 +6140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -418}
-  m_SizeDelta: {x: 500, y: 80}
+  m_AnchoredPosition: {x: 0, y: -425}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1196542604
 MonoBehaviour:
@@ -6354,7 +6381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volver
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6503,7 +6530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Musica
+  m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6775,13 +6802,25 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Healthy life simulator es un juego de gesti\xF3n de recursos.\r\nEl objetivo
-    del juego es perder 30 kg del personaje en 2 semanas. Deber\xE1 realizar actividades
-    como ejercicio y comer comidas saludables para lograr la meta.\r\nCiertas actividades
-    consumen algunos de los recursos del personaje.\r\nEl jugador solo podr\xE1 realizar
-    las actividades hasta las 24:00.\r\nAl dormir pasara al d\xEDa siguiente. Adem\xE1s
-    cambiara la cantidad de su energ\xEDa de hoy a la cantidad de energ\xEDa para
-    ma\xF1ana."
+  m_text: 'Healthy life simulator is a resource management game.
+
+
+    The goal of
+    the game is to lose 30 kg of the character in 2 weeks. You will need to do activities
+    like exercise and eat healthy food to reach the goal.
+
+
+    Certain activities
+    consume some of the character''s resources.
+
+
+    The player will only be able
+    to carry out the activities until 24:00.
+
+
+    When you sleep, it will happen
+    the next day. It will also change the amount of your energy today to the amount
+    of energy for tomorrow.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7237,7 +7276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volver
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7386,7 +7425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cambiar
+  m_text: Change
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7640,14 +7679,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Los recursos se utilizan para poder realizar algunas de las actividades
-    del personaje.\r\n\nFelicidad: Se gana comiendo comida, mirando tele, saliendo
-    a fiesta.\r\nDinero: Se gana trabajando.\r\nTiempo: El jugador solo podr\xE1
-    realizar actividades hasta las 24:00. Al dormir se levantar\xE1 a las 7 de la
-    ma\xF1ana.\r\nLa energ\xEDa de hoy: es la energ\xEDa que consumir\xE1 para poder
-    realizar las actividades.\r\nEnerg\xEDa para ma\xF1ana: es la cantidad de energ\xEDa
-    que el jugador contara al d\xEDa siguiente.\r\nPeso: Es el recurso para ganar
-    el juego. El objetivo del juego llegar a 50 kg o menos.\r"
+  m_text: 'Resources are used to carry out some of the character''s activities.
+
+
+    Happiness:
+    It is earned by eating food, watching TV, going out to party.
+
+    Money: It
+    is earned by working.
+
+    Time: The player will only be able to carry out activities
+    until 24:00. When sleeping he will get up at 7 in the morning.
+
+    Today''s
+    energy: it is the energy that you will consume to be able to carry out the activities.
+
+    Energy
+    for tomorrow: it is the amount of energy that the player will count the next
+    day.
+
+    Weight: It is the resource to win the game. The goal of the game is
+    to reach 50 kg or less.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11590,7 +11642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jugar
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11617,7 +11669,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.6
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12348,7 +12400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Spanish
+  currentLanguage: English
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1
@@ -13238,8 +13290,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 500, y: 80}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2077311489
 MonoBehaviour:

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Linq;
+using DG.Tweening;
 
 namespace HealthyLife {
 
@@ -12,6 +13,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _cookHUDCanvas;
+        [SerializeField] private GameObject _cookHUDPanel;
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
@@ -53,10 +55,12 @@ namespace HealthyLife {
 
         private void ShowCookHUDCanvas() {
             _cookHUDCanvas.enabled = true;
+            _cookHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideCookHUDCanvas() {
-            _cookHUDCanvas.enabled = false;
+            _cookHUDPanel.transform.DOScale(0, 0.5f);
+            //_cookHUDCanvas.enabled = false;
         }
 
         private bool CheckTheIngredients(HealthyFood healthyFood) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace HealthyLife {
 
@@ -9,6 +10,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _fridgeHUDCanvas;
+        [SerializeField] private GameObject _fridgeHUDPanel;
         [SerializeField] private GameObject _fridgeDescriptionGameObject;
         [SerializeField] private GameplayManager _gameplayManager;
 
@@ -30,11 +32,13 @@ namespace HealthyLife {
         private void ShowFridgeHUDCanvas() {
             _fridgeDescriptionGameObject.SetActive(true);
             _fridgeHUDCanvas.enabled = true;
+            _fridgeHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideFridgeHUDCanvas() {
             _fridgeDescriptionGameObject.SetActive(false);
-            _fridgeHUDCanvas.enabled = false;
+            _fridgeHUDPanel.transform.DOScale(0, 0.5f);
+            //_fridgeHUDCanvas.enabled = false;
         }
 
         #endregion

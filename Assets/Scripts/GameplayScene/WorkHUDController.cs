@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace HealthyLife {
 
@@ -10,6 +11,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _workHUDCanvas;
+        [SerializeField] private GameObject _workHUDPanel;
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
@@ -44,11 +46,14 @@ namespace HealthyLife {
                 Debug.Log("no tiene felicidad suficiente");
                 return;
             }
+
             _workHUDCanvas.enabled = true;
+            _workHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideWorkHUDCanvas() {
-            _workHUDCanvas.enabled = false;
+            _workHUDPanel.transform.DOScale(0, 0.5f);
+            //_workHUDCanvas.enabled = false;
         }
 
         #endregion

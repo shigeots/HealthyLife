@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace HealthyLife {
 
@@ -9,6 +10,7 @@ namespace HealthyLife {
         #region Private properties
 
         [SerializeField] private Canvas _sleepHUDCanvas;
+        [SerializeField] private GameObject _sleepHUDPanel;
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
@@ -32,10 +34,12 @@ namespace HealthyLife {
 
         private void ShowSleepHUDCanvas() {
             _sleepHUDCanvas.enabled = true;
+            _sleepHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideSleepHUDCanvas() {
-            _sleepHUDCanvas.enabled = false;
+            //_sleepHUDCanvas.enabled = false;
+            _sleepHUDPanel.transform.DOScale(0, 0.5f);
         }
 
         #endregion
