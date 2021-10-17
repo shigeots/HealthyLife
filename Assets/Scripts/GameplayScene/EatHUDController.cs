@@ -43,12 +43,14 @@ namespace HealthyLife {
                 return;
             }
 
+            _gameplayManager.ActivityHUDShowed = true;
             _eatHUDCanvas.enabled = true;
             _eatHUDGameObject.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideEatHUDCanvas() {
             //_eatHUDCanvas.enabled = false;
+            _gameplayManager.ActivityHUDShowed = false;
             _eatHUDGameObject.transform.DOScale(0, 0.5f);
         }
 

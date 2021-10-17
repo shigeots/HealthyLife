@@ -62,12 +62,14 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowShoppingHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = true;
             _shoppingHUDCanvas.enabled = true;
             _shoppingHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideShoppingHUDCanvas() {
             //_shoppingHUDCanvas.enabled = false;
+            _gameplayManager.ActivityHUDShowed = false;
             _shoppingHUDPanel.transform.DOScale(0, 0.5f);
             ResetUnit();
         }

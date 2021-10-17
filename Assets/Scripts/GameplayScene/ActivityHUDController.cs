@@ -47,6 +47,9 @@ namespace HealthyLife {
         #region Public methods
 
         public void OnClicWorkButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(_gameplayManager.CurrentWeekday == Weekday.Saturday || _gameplayManager.CurrentWeekday == Weekday.Sunday ) {
                 _warningMessageHUDController.ShowWarningMessage(_warningNoWorkWeekendsTranslation);
                 return;
@@ -69,6 +72,10 @@ namespace HealthyLife {
         }
 
         public void OnClicCheckFridgeButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
+
             //_gameplayManager.StartCheckFridgeActivity();
             _gameplayManager.CheckFridge();
             _playerCharacterController.AssignShowFridgeHUDEvent();
@@ -76,6 +83,10 @@ namespace HealthyLife {
         }
 
         public void OnClicWatchTVButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
+            
             _playerCharacterController.AssignShowWatchTVHUDEvent();
             _playerCharacterController.GoToTheTelevision();
 
@@ -83,6 +94,9 @@ namespace HealthyLife {
         }
 
         public void OnClickEatButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(_gameplayManager.ThereAreFood) {
                 _playerCharacterController.AssignShowEatHUDEvent();
                 _playerCharacterController.GoToTheTable();
@@ -93,12 +107,19 @@ namespace HealthyLife {
         }
 
         public void OnClickSleepButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
+
             _playerCharacterController.AssignShowSleepHUDEvent();
             _playerCharacterController.GoToTheBed();
             //_gameplayManager.StartSleepActivity();
         }
 
         public void OnClickCookButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(!_gameplayManager.ThereAreFood && !_gameplayManager.OrderedFoodDelivery) {
                 //_gameplayManager.StartCookActivity();
                 _playerCharacterController.AssignShowCookHUDEvent();
@@ -109,6 +130,9 @@ namespace HealthyLife {
         }
 
         public void OnClickExerciseButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(_gameplayManager.TimePerMinute > 1320) {
                 _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
                 return;
@@ -128,6 +152,9 @@ namespace HealthyLife {
         }
 
         public void OnClickGoShoppingButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(_gameplayManager.TimePerMinute > 1380) {
                 _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
                 return;
@@ -143,6 +170,9 @@ namespace HealthyLife {
         }
 
         public void OnClickGoPartingButton() {
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(_gameplayManager.TimePerMinute > 1140) {
                 _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
                 return;
@@ -162,7 +192,9 @@ namespace HealthyLife {
         }
 
         public void OnClickFoodDelivieryButton() {
-            
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(!_gameplayManager.ThereAreFood && !_gameplayManager.OrderedFoodDelivery) {
                 _playerCharacterController.AssignShowFoodDeliveryHUDEvent();
                 _playerCharacterController.GoToTheInnerDoor();
@@ -175,7 +207,9 @@ namespace HealthyLife {
         }
 
         public void OnClickPickUpDeliveryButton() {
-            
+            if(_gameplayManager.ActivityHUDShowed) {
+                return;
+            }
             if(_deliveryManCharacterController.DeliveryArrived) {
                 _playerCharacterController.AssignShowPickUpDeliveryHUDEvent();
                 _playerCharacterController.GoToTheInnerDoor();

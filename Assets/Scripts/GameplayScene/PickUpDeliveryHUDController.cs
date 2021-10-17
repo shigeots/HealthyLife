@@ -33,11 +33,13 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowPickUpDeliveryHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = true;
             _pickUpDeliveryHUDCanvas.enabled = true;
             _pickUpDeliveryHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HidePickUpDeliveryHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = false;
             _pickUpDeliveryHUDPanel.transform.DOScale(0, 0.5f);
             //_pickUpDeliveryHUDCanvas.enabled = false;
         }

@@ -34,24 +34,13 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowWorkHUDCanvas() {
-            if(_gameplayManager.TimePerMinute > 840) {
-                Debug.Log("No tiene suficeinte tiempo");
-                return;
-            }
-            if(_gameplayManager.EnergyForToday < 30) {
-                Debug.Log("no tiene energia suficiente");
-                return;
-            }
-            if(_gameplayManager.Happiness < 20) {
-                Debug.Log("no tiene felicidad suficiente");
-                return;
-            }
-
+            _gameplayManager.ActivityHUDShowed = true;
             _workHUDCanvas.enabled = true;
             _workHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideWorkHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = false;
             _workHUDPanel.transform.DOScale(0, 0.5f);
             //_workHUDCanvas.enabled = false;
         }

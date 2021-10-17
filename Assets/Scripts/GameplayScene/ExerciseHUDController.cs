@@ -34,20 +34,13 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowExerciseHUDCanvas() {
-            if(_gameplayManager.TimePerMinute > 1320) {
-                Debug.Log("No tiene suficeinte tiempo");
-                return;
-            }
-            if(_gameplayManager.EnergyForToday < 30) {
-                Debug.Log("no tiene energia suficiente");
-                return;
-            }
-            
+            _gameplayManager.ActivityHUDShowed = true;
             _exerciseHUDCanvas.enabled = true;
             _exerciseHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideExerciseHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = false;
             _exerciseHUDPanel.transform.DOScale(0, 0.5f);
             //_exerciseHUDCanvas.enabled = false;
         }

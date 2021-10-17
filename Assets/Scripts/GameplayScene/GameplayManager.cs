@@ -33,6 +33,8 @@ namespace HealthyLife {
         [SerializeField] private int _waitingTimeForDelivery = 0;
         [SerializeField] private List<Ingredient> _fridge;
 
+        private bool _activityHUDShowed = false;
+
         #endregion
 
         #region Internal properties
@@ -63,6 +65,7 @@ namespace HealthyLife {
         public bool OrderedFoodDelivery { get => _orderedFoodDelivery; set => _orderedFoodDelivery = value; }
         public int WaitingTimeForDelivery { get => _waitingTimeForDelivery; set => _waitingTimeForDelivery = value; }
         public List<Ingredient> Fridge { get => _fridge; set => _fridge = value; }
+        public bool ActivityHUDShowed { get => _activityHUDShowed; set => _activityHUDShowed = value; }
 
         #endregion
 
@@ -281,17 +284,17 @@ namespace HealthyLife {
         }
 
         internal void StartWatchTV30MinutesActivity() {
-            IncreaseHappiness(2);
+            IncreaseHappiness(1);
             IncreaseMoreMinutes(30);
         }
 
         internal void StartWatchTV1HourActivity() {
-            IncreaseHappiness(4);
+            IncreaseHappiness(2);
             IncreaseMoreMinutes(60);
         }
 
         internal void StartWatchTV2HoursActivity() {
-            IncreaseHappiness(8);
+            IncreaseHappiness(4);
             IncreaseMoreMinutes(120);
         }
 

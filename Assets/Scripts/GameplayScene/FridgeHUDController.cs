@@ -30,12 +30,14 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowFridgeHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = true;
             _fridgeDescriptionGameObject.SetActive(true);
             _fridgeHUDCanvas.enabled = true;
             _fridgeHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideFridgeHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = false;
             _fridgeDescriptionGameObject.SetActive(false);
             _fridgeHUDPanel.transform.DOScale(0, 0.5f);
             //_fridgeHUDCanvas.enabled = false;

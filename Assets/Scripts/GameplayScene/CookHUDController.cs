@@ -57,11 +57,13 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowCookHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = true;
             _cookHUDCanvas.enabled = true;
             _cookHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideCookHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = false;
             _cookHUDPanel.transform.DOScale(0, 0.5f);
             //_cookHUDCanvas.enabled = false;
         }

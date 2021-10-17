@@ -53,11 +53,13 @@ namespace HealthyLife {
                 return;
             }*/
             
+            _gameplayManager.ActivityHUDShowed = true;
             _foodDeliveryHUDCanvas.enabled = true;
             _foodDeliveryHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideFoodDeliveryHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = false;
             _foodDeliveryHUDPanel.transform.DOScale(0, 0.5f);
             //_foodDeliveryHUDCanvas.enabled = false;
         }

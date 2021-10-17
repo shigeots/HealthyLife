@@ -43,11 +43,13 @@ namespace HealthyLife {
         #region Private methods
 
         private void ShowWatchTVHUDCanvas() { 
+            _gameplayManager.ActivityHUDShowed = true;
             _watchTVHUDCanvas.enabled = true;
             _watchTVHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
 
         private void HideWatchTVHUDCanvas() {
+            _gameplayManager.ActivityHUDShowed = false;
             _watchTVHUDPanel.transform.DOScale(0, 0.5f);
             //_watchTVHUDCanvas.enabled = false;
         }
