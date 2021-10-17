@@ -17,11 +17,14 @@ namespace HealthyLife {
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
+        [SerializeField] private WarningMessageHUDController _warningMessageHUDController;
 
-        [SerializeField] TextMeshProUGUI _watchTVDescriptionText;
-        [SerializeField] TextMeshProUGUI _30minutesDescriptionText;
-        [SerializeField] TextMeshProUGUI _1hourDescriptionText;
-        [SerializeField] TextMeshProUGUI _2hoursDescriptionText;
+        [SerializeField] private TextMeshProUGUI _watchTVDescriptionText;
+        [SerializeField] private TextMeshProUGUI _30minutesDescriptionText;
+        [SerializeField] private TextMeshProUGUI _1hourDescriptionText;
+        [SerializeField] private TextMeshProUGUI _2hoursDescriptionText;
+
+        private const string _warningTooLateTranslation = "WarningTooLate";
 
         #endregion
 
@@ -39,12 +42,7 @@ namespace HealthyLife {
 
         #region Private methods
 
-        private void ShowWatchTVHUDCanvas() {
-            if(_gameplayManager.TimePerMinute > 1380) {
-                Debug.Log("No tiene suficeinte tiempo");
-                return;
-            }
-            
+        private void ShowWatchTVHUDCanvas() { 
             _watchTVHUDCanvas.enabled = true;
             _watchTVHUDPanel.transform.DOScale(1, 0.6f).SetEase(Ease.OutBack);
         }
@@ -81,6 +79,11 @@ namespace HealthyLife {
         }
 
         public void OnClic30MinutesButton() {
+            if(_gameplayManager.TimePerMinute > 1410) {
+                _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
+                return;
+            }
+
             _gameplayManager.StartWatchTV30MinutesActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
@@ -89,6 +92,11 @@ namespace HealthyLife {
         }
 
         public void OnClic1HourButton() {
+            if(_gameplayManager.TimePerMinute > 1380) {
+                _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
+                return;
+            }
+
             _gameplayManager.StartWatchTV1HourActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
@@ -97,6 +105,11 @@ namespace HealthyLife {
         }
 
         public void OnClic2HoursButton() {
+            if(_gameplayManager.TimePerMinute > 1320) {
+                _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
+                return;
+            }
+
             _gameplayManager.StartWatchTV2HoursActivity();
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();

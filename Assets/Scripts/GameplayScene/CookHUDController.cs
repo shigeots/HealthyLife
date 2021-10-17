@@ -19,11 +19,14 @@ namespace HealthyLife {
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private ActivityHUDController _activityHUDController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
+        [SerializeField] private WarningMessageHUDController _warningMessageHUDController;
 
         [SerializeField] TextMeshProUGUI _cookDescriptionText;
         [SerializeField] TextMeshProUGUI _saladDescriptionText;
         [SerializeField] TextMeshProUGUI _panSearedChickenDescriptionText;
         [SerializeField] TextMeshProUGUI _panSearedFishDescriptionText;
+
+        private const string _warningIngredientsTranslation = "WarningIngredients";
 
         #endregion
 
@@ -126,7 +129,7 @@ namespace HealthyLife {
                 _playerCharacterController.PlayCookSound();
                 HideCookHUDCanvas();
             } else {
-                Debug.Log("No hay ingrediente");
+                _warningMessageHUDController.ShowWarningMessage(_warningIngredientsTranslation);
             }
             
         }
@@ -142,7 +145,7 @@ namespace HealthyLife {
                 _playerCharacterController.PlayCookSound();
                 HideCookHUDCanvas();
             } else {
-                Debug.Log("No hay ingrediente");
+                _warningMessageHUDController.ShowWarningMessage(_warningIngredientsTranslation);
             }
         }
 
@@ -157,7 +160,7 @@ namespace HealthyLife {
                 _playerCharacterController.PlayCookSound();
                 HideCookHUDCanvas();
             } else {
-                Debug.Log("No hay ingrediente");
+                _warningMessageHUDController.ShowWarningMessage(_warningIngredientsTranslation);
             }
         }
 

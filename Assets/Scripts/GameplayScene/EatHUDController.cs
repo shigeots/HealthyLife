@@ -15,6 +15,7 @@ namespace HealthyLife {
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
+        [SerializeField] private DeliveryManCharacterController _deliveryManCharacterController;
 
         #endregion
 
@@ -60,6 +61,7 @@ namespace HealthyLife {
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
             _playerCharacterController.PlayEatSound();
+            _deliveryManCharacterController.DeliveryArrived = false;
             HideEatHUDCanvas();
         }
 

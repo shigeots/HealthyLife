@@ -11,9 +11,20 @@ namespace HealthyLife {
         [SerializeField] private GameplayManager _gameplayManager;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
         [SerializeField] private DeliveryManCharacterController _deliveryManCharacterController;
+        [SerializeField] private WarningMessageHUDController _warningMessageHUDController;
 
         [SerializeField] private GameObject _foodDeliveryButton;
         [SerializeField] private GameObject _pickUpDeliveryButton;
+
+        private const string _warningNoFoodTranslation = "WarningNoFood";
+        private const string _warningThereFoodOrDeliveryTranslation = "WarningThereFoodOrDelivery";
+        private const string _warningOrderNoArrivedTranslation =  "WarningOrderNoArrived";
+        private const string _warningNoWorkWeekendsTranslation =  "WarningNoWorkWeekends";
+        private const string _warningEnergyTranslation = "WarningEnergy";
+        private const string _warningMoneyTranslation = "WarningMoney";
+        private const string _warningHappinessTranslation = "WarningHappiness";
+        private const string _warningTooLateTranslation = "WarningTooLate";
+        
 
         #endregion
 
@@ -37,15 +48,24 @@ namespace HealthyLife {
 
         public void OnClicWorkButton() {
             if(_gameplayManager.CurrentWeekday == Weekday.Saturday || _gameplayManager.CurrentWeekday == Weekday.Sunday ) {
-                Debug.Log("No tienes trabajo los fines de semana");
+                _warningMessageHUDController.ShowWarningMessage(_warningNoWorkWeekendsTranslation);
                 return;
             }
-            if(_gameplayManager.Happiness >= 20 && _gameplayManager.EnergyForToday >= 30) {
-                _playerCharacterController.AssignShowWorkHUDEvent();
-                _playerCharacterController.GoToTheInnerDoor();
-            } else {
-                Debug.Log("Felicidad o energia insuficiente");
+            if(_gameplayManager.TimePerMinute > 840) {
+                _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
+                return;
             }
+            if(_gameplayManager.EnergyForToday < 30) {
+                _warningMessageHUDController.ShowWarningMessage(_warningEnergyTranslation);
+                return;
+            }
+            if(_gameplayManager.Happiness < 20) {
+                _warningMessageHUDController.ShowWarningMessage(_warningHappinessTranslation);
+                return;
+            }
+
+            _playerCharacterController.AssignShowWorkHUDEvent();
+            _playerCharacterController.GoToTheInnerDoor();
         }
 
         public void OnClicCheckFridgeButton() {
@@ -68,7 +88,7 @@ namespace HealthyLife {
                 _playerCharacterController.GoToTheTable();
                 //_gameplayManager.StartEatActivity();
             } else {
-                Debug.Log("No hay comida");
+                _warningMessageHUDController.ShowWarningMessage(_warningNoFoodTranslation);
             }
         }
 
@@ -84,34 +104,60 @@ namespace HealthyLife {
                 _playerCharacterController.AssignShowCookHUDEvent();
                 _playerCharacterController.GoToTheKitchen();
             } else {
-                Debug.Log("Ya tiene comida en la mesa o pidio delivery");
+                _warningMessageHUDController.ShowWarningMessage(_warningThereFoodOrDeliveryTranslation);
             }
         }
 
         public void OnClickExerciseButton() {
+            if(_gameplayManager.TimePerMinute > 1320) {
+                _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
+                return;
+            }
+            if(_gameplayManager.EnergyForToday < 25) {
+                _warningMessageHUDController.ShowWarningMessage(_warningEnergyTranslation);
+                return;
+            }
+            if(_gameplayManager.Happiness < 10) {
+                _warningMessageHUDController.ShowWarningMessage(_warningHappinessTranslation);
+                return;
+            }
+
             _playerCharacterController.AssignShowExerciseHUDEvent();
             _playerCharacterController.GoToTheInnerDoor();
             //_gameplayManager.StartExerciseActivity();
         }
 
         public void OnClickGoShoppingButton() {
+            if(_gameplayManager.TimePerMinute > 1380) {
+                _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
+                return;
+            }
+            if(_gameplayManager.EnergyForToday < 10) {
+                _warningMessageHUDController.ShowWarningMessage(_warningEnergyTranslation);
+                return;
+            }
+
             //_gameplayManager.StartShopActivity();
             _playerCharacterController.AssignShowShoppingHUDEvent();
             _playerCharacterController.GoToTheInnerDoor();
         }
 
         public void OnClickGoPartingButton() {
-            if(_gameplayManager.Money >= 160) {
-                _playerCharacterController.AssignShowPartingHUDEvent();
-                _playerCharacterController.GoToTheInnerDoor();
+            if(_gameplayManager.TimePerMinute > 1140) {
+                _warningMessageHUDController.ShowWarningMessage(_warningTooLateTranslation);
+                return;
             }
-            /*
-            if(_gameplayManager.CurrentWeekday == Weekday.Saturday && _gameplayManager.CurrentWeekday == Weekday.Sunday) {
-                
-            } else {
-                Debug.Log("No es fin de semana o ");
+            if(_gameplayManager.Money < 100) {
+                _warningMessageHUDController.ShowWarningMessage(_warningMoneyTranslation);
+                return;
             }
-            */
+            if(_gameplayManager.EnergyForToday < 10) {
+                _warningMessageHUDController.ShowWarningMessage(_warningEnergyTranslation);
+                return;
+            }
+
+            _playerCharacterController.AssignShowPartingHUDEvent();
+            _playerCharacterController.GoToTheInnerDoor();
             //_gameplayManager.StartGoParttingActivity();
         }
 
@@ -121,7 +167,7 @@ namespace HealthyLife {
                 _playerCharacterController.AssignShowFoodDeliveryHUDEvent();
                 _playerCharacterController.GoToTheInnerDoor();
             } else {
-                Debug.Log("Ya tiene comida en la mesa o pidio delivery");
+                _warningMessageHUDController.ShowWarningMessage(_warningThereFoodOrDeliveryTranslation);
             }
             
 
@@ -135,7 +181,7 @@ namespace HealthyLife {
                 _playerCharacterController.GoToTheInnerDoor();
                 _gameplayManager.OrderedFoodDelivery = false;
             } else {
-                Debug.Log("El pedido aun no ha llegado");
+                _warningMessageHUDController.ShowWarningMessage(_warningOrderNoArrivedTranslation);
             }
             
 

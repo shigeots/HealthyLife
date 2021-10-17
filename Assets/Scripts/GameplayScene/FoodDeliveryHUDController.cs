@@ -17,6 +17,7 @@ namespace HealthyLife {
         [SerializeField] private CalendarHUDController _calendarHUDController;
         [SerializeField] private GameStatsHUDController _gameStatsHUDController;
         [SerializeField] private ActivityHUDController _activityHUDController;
+        [SerializeField] private WarningMessageHUDController _warningMessageHUDController;
 
         [SerializeField] TextMeshProUGUI _foodDeliveryDescriptionText;
         [SerializeField] TextMeshProUGUI _friedChickenDescriptionText;
@@ -28,6 +29,8 @@ namespace HealthyLife {
         [SerializeField] JunkFood friedChicken = new JunkFood("Fried chicken", 3, 40, 4, 25);
         [SerializeField] JunkFood pizza = new JunkFood("Pizza", 4, 50, 10, 40);
         [SerializeField] JunkFood hamburger = new JunkFood("Hamburger", 3, 60, 18, 55);
+
+        private const string _warningMoneyTranslation = "WarningMoney";
 
         #region Main methods
 
@@ -86,6 +89,11 @@ namespace HealthyLife {
         }
 
         public void OnClicFriedChickenButton() {
+            if(_gameplayManager.Money < friedChicken.Cost) {
+                _warningMessageHUDController.ShowWarningMessage(_warningMoneyTranslation);
+                return;
+            }
+
             _gameplayManager.StartFoodDeliveryActivity(friedChicken);
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
@@ -94,6 +102,11 @@ namespace HealthyLife {
         }
 
         public void OnClicPizzaButton() {
+            if(_gameplayManager.Money < pizza.Cost) {
+                _warningMessageHUDController.ShowWarningMessage(_warningMoneyTranslation);
+                return;
+            }
+            
             _gameplayManager.StartFoodDeliveryActivity(pizza);
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
@@ -102,6 +115,11 @@ namespace HealthyLife {
         }
 
         public void OnClicHamburgerButton() {
+            if(_gameplayManager.Money < hamburger.Cost) {
+                _warningMessageHUDController.ShowWarningMessage(_warningMoneyTranslation);
+                return;
+            }
+            
             _gameplayManager.StartFoodDeliveryActivity(hamburger);
             _calendarHUDController.UpdateCalendarHUD();
             _gameStatsHUDController.UpdateGameStatsHUD();
